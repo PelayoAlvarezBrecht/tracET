@@ -10,11 +10,11 @@ You can install tracET in two ways:
 * From PyPI (recommended):
   * In a python terminal, write
 ```commandline
-pip install https://test.pypi.org/simple/ tracET
+pip install -i https://test.pypi.org/simple/ tracET
 ```
   * If it desnt work, try:
 ```commandline
-pip install https://test.pypi.org/simple/ tracET --no-build-isolation
+pip install -i https://test.pypi.org/simple/ tracET --no-build-isolation
 ```
   * If is not do it automatically, add this line to your bashrc to add the scripts as commands:
 ```commandline
