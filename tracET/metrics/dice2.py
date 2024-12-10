@@ -30,7 +30,7 @@ def cs_dice(tomo: np.ndarray, tomo_gt: np.ndarray,sigma=3,tomo_bin=False,tomo_im
     tomo_skel = tomo_skel * tomo #eliminte noise
 
     del tomo_dsts
-    tomo_gt_dsts = prepare_input(tomo, sigma, tomo_gt_bin, gt_imf).astype(np.float32)
+    tomo_gt_dsts = prepare_input(tomo_gt, sigma, tomo_gt_bin, gt_imf).astype(np.float32)
     tomo_gt_dsts = tomo_gt_dsts * (tomo_gt_dsts > 0)
     tomo_gt_skel = surface_skel(tomo_gt_dsts, f= 0)
     tomo_gt_skel = tomo_gt_skel * tomo_gt #eliminte noise
@@ -72,7 +72,7 @@ def cl_dice(tomo: np.ndarray, tomo_gt: np.ndarray,sigma=3,tomo_bin=False,tomo_im
     # Getting segmentations ridges
     tomo_dsts=prepare_input(tomo,sigma,tomo_bin,tomo_imf).astype(np.float32)
     tomo_dsts = tomo_dsts * (tomo_dsts > 0)
-    tomo_gt_dsts = prepare_input(tomo, sigma, tomo_gt_bin, gt_imf).astype(np.float32)
+    tomo_gt_dsts = prepare_input(tomo_gt, sigma, tomo_gt_bin, gt_imf).astype(np.float32)
     tomo_gt_dsts = tomo_gt_dsts * (tomo_gt_dsts > 0)
     tomo_skel = line_skel(tomo_dsts, f=0.5)
     tomo_skel = tomo_skel * tomo #eliminte noise
@@ -117,7 +117,7 @@ def pt_dice(tomo: np.ndarray, tomo_gt: np.ndarray,sigma=3,tomo_bin=False,tomo_im
     # Getting segmentations ridges
     tomo_dsts=prepare_input(tomo,sigma,tomo_bin,tomo_imf).astype(np.float32)
     tomo_dsts=tomo_dsts*(tomo_dsts>0)
-    tomo_gt_dsts = prepare_input(tomo, sigma, tomo_gt_bin, gt_imf).astype(np.float32)
+    tomo_gt_dsts = prepare_input(tomo_gt, sigma, tomo_gt_bin, gt_imf).astype(np.float32)
     tomo_gt_dsts = tomo_gt_dsts * (tomo_gt_dsts > 0)
     tomo_skel = point_skel(tomo_dsts, f=0.1)
     tomo_skel = tomo_skel * tomo #eliminte noise
