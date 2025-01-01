@@ -39,7 +39,7 @@ static int sq, lq, ld, task_size;
 //static long long int *M;
 //static float *Ixx, *Iyy, *Izz, *Ixy, *Ixz, *Iyz;
 //static float *L1, *L2, *L3;
-//static float *I, *V1x, *V1y, *V1z, *V2x, *V2y, *V2z, *V3x, *V3y, *V3z;
+//static float *CHANGEME, *V1x, *V1y, *V1z, *V2x, *V2y, *V2z, *V3x, *V3y, *V3z;
 //static unsigned char *F;
 static pthread_mutex_t mutex;
 
@@ -61,7 +61,7 @@ static long long int get_cache_size();
 
 typedef struct{
 //inputs
-    float* I;
+    float* CHANGEME;
 	float* V1x;
 	float* V1y;
 	float* V1z;
@@ -74,7 +74,7 @@ typedef struct{
 
 typedef struct{
 //inputs
-    float* I;
+    float* CHANGEME;
 	float* V1x;
 	float* V1y;
 	float* V1z;
@@ -90,7 +90,7 @@ typedef struct{
 
 typedef struct{
 //inputs
-    float* I;
+    float* CHANGEME;
 	float* V1x;
 	float* V1y;
 	float* V1z;
@@ -143,8 +143,8 @@ static PyObject * supression_nonmaxsup_surf(PyObject *self, PyObject *args)
 	//Transform to NumPy matrix
 	PyArrayObject* I_np_array = (PyArrayObject*)PyArray_FROM_OTF(I_array, NPY_FLOAT32,NPY_ARRAY_IN_ARRAY);
 	if (I_np_array == NULL) {
-        PyErr_SetString(PyExc_TypeError, "Error transforming I in a NumPy matrix.\n");
-        printf("ERROR: supression_nonmaxsup_surf: Unable to transform I in a NumPy Matrix.\n");
+        PyErr_SetString(PyExc_TypeError, "Error transforming CHANGEME in a NumPy matrix.\n");
+        printf("ERROR: supression_nonmaxsup_surf: Unable to transform CHANGEME in a NumPy Matrix.\n");
         return NULL;
     }
 
@@ -230,7 +230,7 @@ static PyObject * supression_nonmaxsup_surf(PyObject *self, PyObject *args)
 
 
 	//Saving data in C
-	float* I =(float*)PyArray_DATA(I_np_array);
+	float* CHANGEME =(float*)PyArray_DATA(I_np_array);
 	float* V1x=(float*)PyArray_DATA(V1x_np_array);
 	float* V1y=(float*)PyArray_DATA(V1y_np_array);
 	float* V1z=(float*)PyArray_DATA(V1z_np_array);
@@ -268,7 +268,7 @@ static PyObject * supression_nonmaxsup_surf(PyObject *self, PyObject *args)
 	F= (unsigned int*)malloc(m*sizeof(unsigned int));
 
     Tomos_surf tomo;
-    tomo.I=I;
+    tomo.CHANGEME=CHANGEME;
     tomo.V1x=V1x;
     tomo.V1y=V1y;
     tomo.V1z=V1z;
@@ -369,8 +369,8 @@ static PyObject * supression_nonmaxsup_line(PyObject *self, PyObject *args)
 	//Transform to NumPy matrix
 	PyArrayObject* I_np_array = (PyArrayObject*)PyArray_FROM_OTF(I_array, NPY_FLOAT32,NPY_ARRAY_IN_ARRAY);
 	if (I_np_array == NULL) {
-        PyErr_SetString(PyExc_TypeError, "Error transforming I in a NumPy matrix.\n");
-        printf("ERROR: supression_nonmaxsup_line: Unable to transform I in a NumPy Matrix.\n");
+        PyErr_SetString(PyExc_TypeError, "Error transforming CHANGEME in a NumPy matrix.\n");
+        printf("ERROR: supression_nonmaxsup_line: Unable to transform CHANGEME in a NumPy Matrix.\n");
         return NULL;
     }
 
@@ -484,7 +484,7 @@ static PyObject * supression_nonmaxsup_line(PyObject *self, PyObject *args)
 
 
 	//Saving data in C
-	float* I =(float*)PyArray_DATA(I_np_array);
+	float* CHANGEME =(float*)PyArray_DATA(I_np_array);
 	float* V1x=(float*)PyArray_DATA(V1x_np_array);
 	float* V1y=(float*)PyArray_DATA(V1y_np_array);
 	float* V1z=(float*)PyArray_DATA(V1z_np_array);
@@ -524,7 +524,7 @@ static PyObject * supression_nonmaxsup_line(PyObject *self, PyObject *args)
 	F= (unsigned int*)malloc(m*sizeof(unsigned int));
 
     Tomos_line tomo;
-    tomo.I=I;
+    tomo.CHANGEME=CHANGEME;
     tomo.V1x=V1x;
     tomo.V1y=V1y;
     tomo.V1z=V1z;
@@ -629,8 +629,8 @@ static PyObject * supression_nonmaxsup_point(PyObject *self, PyObject *args)
 	//Transform to NumPy matrix
 	PyArrayObject* I_np_array = (PyArrayObject*)PyArray_FROM_OTF(I_array, NPY_FLOAT32,NPY_ARRAY_IN_ARRAY);
 	if (I_np_array == NULL) {
-        PyErr_SetString(PyExc_TypeError, "Error transforming I in a NumPy matrix.\n");
-        printf("ERROR: supression_nonmaxsup_point: Unable to transform I in a NumPy Matrix.\n");
+        PyErr_SetString(PyExc_TypeError, "Error transforming CHANGEME in a NumPy matrix.\n");
+        printf("ERROR: supression_nonmaxsup_point: Unable to transform CHANGEME in a NumPy Matrix.\n");
         return NULL;
     }
 
@@ -783,7 +783,7 @@ static PyObject * supression_nonmaxsup_point(PyObject *self, PyObject *args)
 
 
 	//Saving data in C
-	float* I =(float*)PyArray_DATA(I_np_array);
+	float* CHANGEME =(float*)PyArray_DATA(I_np_array);
 	float* V1x=(float*)PyArray_DATA(V1x_np_array);
 	float* V1y=(float*)PyArray_DATA(V1y_np_array);
 	float* V1z=(float*)PyArray_DATA(V1z_np_array);
@@ -829,7 +829,7 @@ static PyObject * supression_nonmaxsup_point(PyObject *self, PyObject *args)
 	F= (unsigned int*)malloc(m*sizeof(unsigned int));
 
     Tomos_point tomo;
-    tomo.I=I;
+    tomo.CHANGEME=CHANGEME;
     tomo.V1x=V1x;
     tomo.V1y=V1y;
     tomo.V1z=V1z;
@@ -1700,8 +1700,7 @@ static void* look_neigbourhood_surf( void* ptr ){
 
 
     typedef struct{
-//inputs
-    float* I;
+    float* CHANGEME;
 	float* V1x;
 	float* V1y;
 	float* V1z;
@@ -1724,7 +1723,7 @@ static void* look_neigbourhood_surf( void* ptr ){
 	float** K1;
 	unsigned char lock = 0x01;
 	Tomos* tomo = (Tomos*)ptr;
-	float* I = tomo->I;
+	float* CHANGEME = tomo->CHANGEME;
 	float* V1x = tomo->V1x;
 	float* V1y = tomo->V1y;
 	float* V1z = tomo->V1z;
@@ -1766,8 +1765,8 @@ static void* look_neigbourhood_surf( void* ptr ){
 			i = M[k];
 			//printf("k=%d, i=%d, j=%d\n",k,i,j);
 
-			lv1 = I[i];
-			//printf("I[%d] vale %f\n",i,I[i]);
+			lv1 = CHANGEME[i];
+			//printf("CHANGEME[%d] vale %f\n",i,CHANGEME[i]);
 			//printf("lv1 vale %f\n",lv1);
 
 			K1[0][j] = fabs( V1x[i] * INTER_FACTOR );
@@ -1784,116 +1783,116 @@ static void* look_neigbourhood_surf( void* ptr ){
 			A1[0][j] = lv1;
 			B1[0][j] = lv1;
 			if (V1x[i]>=0) {
-				A1[1][j] = I[i+mx*my];
-				B1[1][j] = I[i-mx*my];
+				A1[1][j] = CHANGEME[i+mx*my];
+				B1[1][j] = CHANGEME[i-mx*my];
 				if ( (V1y[i]>=0) && (V1z[i]>=0) ) {
-					A1[2][j] = I[i+mx];
-					A1[3][j] = I[i+mx*(my+1)];
-					A1[4][j] = I[i+1];
-					A1[5][j] = I[i+mx*my+1];
-					A1[6][j] = I[i+mx+1];
-					A1[7][j] = I[i+mx*(my+1)+1];
-					B1[2][j] = I[i-mx];
-					B1[3][j] = I[i-mx*(my+1)];
-					B1[4][j] = I[i-1];
-					B1[5][j] = I[i-mx*my-1];
-					B1[6][j] = I[i-mx-1];
-					B1[7][j] = I[i-mx*(my+1)-1];
+					A1[2][j] = CHANGEME[i+mx];
+					A1[3][j] = CHANGEME[i+mx*(my+1)];
+					A1[4][j] = CHANGEME[i+1];
+					A1[5][j] = CHANGEME[i+mx*my+1];
+					A1[6][j] = CHANGEME[i+mx+1];
+					A1[7][j] = CHANGEME[i+mx*(my+1)+1];
+					B1[2][j] = CHANGEME[i-mx];
+					B1[3][j] = CHANGEME[i-mx*(my+1)];
+					B1[4][j] = CHANGEME[i-1];
+					B1[5][j] = CHANGEME[i-mx*my-1];
+					B1[6][j] = CHANGEME[i-mx-1];
+					B1[7][j] = CHANGEME[i-mx*(my+1)-1];
 				}else if ( (V1y[i]<0) && (V1z[i]>=0) ) {
-					A1[2][j] = I[i-mx];
-					A1[3][j] = I[i+mx*(my-1)];
-					A1[4][j] = I[i+1];
-					A1[5][j] = I[i+mx*my+1];
-					A1[6][j] = I[i-mx+1];
-					A1[7][j] = I[i+mx*(my-1)+1];
-					B1[2][j] = I[i+mx];
-					B1[3][j] = I[i-mx*(my-1)];
-					B1[4][j] = I[i-1];
-					B1[5][j] = I[i-mx*my-1];
-					B1[6][j] = I[i+mx-1];
-					B1[7][j] = I[i-mx*(my-1)-1];
+					A1[2][j] = CHANGEME[i-mx];
+					A1[3][j] = CHANGEME[i+mx*(my-1)];
+					A1[4][j] = CHANGEME[i+1];
+					A1[5][j] = CHANGEME[i+mx*my+1];
+					A1[6][j] = CHANGEME[i-mx+1];
+					A1[7][j] = CHANGEME[i+mx*(my-1)+1];
+					B1[2][j] = CHANGEME[i+mx];
+					B1[3][j] = CHANGEME[i-mx*(my-1)];
+					B1[4][j] = CHANGEME[i-1];
+					B1[5][j] = CHANGEME[i-mx*my-1];
+					B1[6][j] = CHANGEME[i+mx-1];
+					B1[7][j] = CHANGEME[i-mx*(my-1)-1];
 				}else if ( (V1y[i]>=0) && (V1z[i]<0) ) {
-					A1[2][j] = I[i+mx];
-					A1[3][j] = I[i+mx*(my+1)];
-					A1[4][j] = I[i+1];
-					A1[5][j] = I[i+mx*my+1];
-					A1[6][j] = I[i+mx+1];
-					A1[7][j] = I[i+mx*(my+1)+1];
-					B1[2][j] = I[i-mx];
-					B1[3][j] = I[i-mx*(my+1)];
-					B1[4][j] = I[i-1];
-					B1[5][j] = I[i-mx*my-1];
-					B1[6][j] = I[i-mx-1];
-					B1[7][j] = I[i-mx*(my+1)-1];
+					A1[2][j] = CHANGEME[i+mx];
+					A1[3][j] = CHANGEME[i+mx*(my+1)];
+					A1[4][j] = CHANGEME[i+1];
+					A1[5][j] = CHANGEME[i+mx*my+1];
+					A1[6][j] = CHANGEME[i+mx+1];
+					A1[7][j] = CHANGEME[i+mx*(my+1)+1];
+					B1[2][j] = CHANGEME[i-mx];
+					B1[3][j] = CHANGEME[i-mx*(my+1)];
+					B1[4][j] = CHANGEME[i-1];
+					B1[5][j] = CHANGEME[i-mx*my-1];
+					B1[6][j] = CHANGEME[i-mx-1];
+					B1[7][j] = CHANGEME[i-mx*(my+1)-1];
 				}else {
-					A1[2][j] = I[i-mx];
-					A1[3][j] = I[i+mx*(my-1)];
-					A1[4][j] = I[i+1];
-					A1[5][j] = I[i+mx*my+1];
-					A1[6][j] = I[i-mx+1];
-					A1[7][j] = I[i+mx*(my-1)+1];
-					B1[2][j] = I[i+mx];
-					B1[3][j] = I[i-mx*(my-1)];
-					B1[4][j] = I[i-1];
-					B1[5][j] = I[i-mx*my-1];
-					B1[6][j] = I[i+mx-1];
-					B1[7][j] = I[i-mx*(my-1)-1];
+					A1[2][j] = CHANGEME[i-mx];
+					A1[3][j] = CHANGEME[i+mx*(my-1)];
+					A1[4][j] = CHANGEME[i+1];
+					A1[5][j] = CHANGEME[i+mx*my+1];
+					A1[6][j] = CHANGEME[i-mx+1];
+					A1[7][j] = CHANGEME[i+mx*(my-1)+1];
+					B1[2][j] = CHANGEME[i+mx];
+					B1[3][j] = CHANGEME[i-mx*(my-1)];
+					B1[4][j] = CHANGEME[i-1];
+					B1[5][j] = CHANGEME[i-mx*my-1];
+					B1[6][j] = CHANGEME[i+mx-1];
+					B1[7][j] = CHANGEME[i-mx*(my-1)-1];
 				}
 			}else {
-				A1[1][j] = I[i-mx*my];
-				B1[1][j] = I[i+mx*my];
+				A1[1][j] = CHANGEME[i-mx*my];
+				B1[1][j] = CHANGEME[i+mx*my];
 				if ( (V1y[i]>=0) && (V1z[i]>=0) ) {
-					A1[2][j] = I[i+mx];
-					A1[3][j] = I[i-mx*(my-1)];
-					A1[4][j] = I[i-1];
-					A1[5][j] = I[i-mx*my-1];
-					A1[6][j] = I[i+mx-1];
-					A1[7][j] = I[i-mx*(my-1)-1];
-					B1[2][j] = I[i-mx];
-					B1[3][j] = I[i+mx*(my-1)];
-					B1[4][j] = I[i+1];
-					B1[5][j] = I[i+mx*my+1];
-					B1[6][j] = I[i-mx+1];
-					B1[7][j] = I[i+mx*(my-1)+1];
+					A1[2][j] = CHANGEME[i+mx];
+					A1[3][j] = CHANGEME[i-mx*(my-1)];
+					A1[4][j] = CHANGEME[i-1];
+					A1[5][j] = CHANGEME[i-mx*my-1];
+					A1[6][j] = CHANGEME[i+mx-1];
+					A1[7][j] = CHANGEME[i-mx*(my-1)-1];
+					B1[2][j] = CHANGEME[i-mx];
+					B1[3][j] = CHANGEME[i+mx*(my-1)];
+					B1[4][j] = CHANGEME[i+1];
+					B1[5][j] = CHANGEME[i+mx*my+1];
+					B1[6][j] = CHANGEME[i-mx+1];
+					B1[7][j] = CHANGEME[i+mx*(my-1)+1];
 				}else if ( (V1y[i]<0) && (V1z[i]>=0) ) {
-					A1[2][j] = I[i-mx];
-					A1[3][j] = I[i-mx*(my+1)];
-					A1[4][j] = I[i-1];
-					A1[5][j] = I[i-mx*my-1];
-					A1[6][j] = I[i-mx-1];
-					A1[7][j] = I[i-mx*(my+1)-1];
-					B1[2][j] = I[i+mx];
-					B1[3][j] = I[i+mx*(my+1)];
-					B1[4][j] = I[i+1];
-					B1[5][j] = I[i+mx*my+1];
-					B1[6][j] = I[i+mx+1];
-					B1[7][j] = I[i+mx*(my+1)+1];
+					A1[2][j] = CHANGEME[i-mx];
+					A1[3][j] = CHANGEME[i-mx*(my+1)];
+					A1[4][j] = CHANGEME[i-1];
+					A1[5][j] = CHANGEME[i-mx*my-1];
+					A1[6][j] = CHANGEME[i-mx-1];
+					A1[7][j] = CHANGEME[i-mx*(my+1)-1];
+					B1[2][j] = CHANGEME[i+mx];
+					B1[3][j] = CHANGEME[i+mx*(my+1)];
+					B1[4][j] = CHANGEME[i+1];
+					B1[5][j] = CHANGEME[i+mx*my+1];
+					B1[6][j] = CHANGEME[i+mx+1];
+					B1[7][j] = CHANGEME[i+mx*(my+1)+1];
 				}else if ( (V1y[i]>=0) && (V1z[i]<0) ) {
-					A1[2][j] = I[i+mx];
-					A1[3][j] = I[i-mx*(my-1)];
-					A1[4][j] = I[i-1];
-					A1[5][j] = I[i-mx*my-1];
-					A1[6][j] = I[i+mx-1];
-					A1[7][j] = I[i-mx*(my-1)-1];
-					B1[2][j] = I[i-mx];
-					B1[3][j] = I[i+mx*(my-1)];
-					B1[4][j] = I[i+1];
-					B1[5][j] = I[i+mx*my+1];
-					B1[6][j] = I[i-mx+1];
-					B1[7][j] = I[i+mx*(my-1)+1];
+					A1[2][j] = CHANGEME[i+mx];
+					A1[3][j] = CHANGEME[i-mx*(my-1)];
+					A1[4][j] = CHANGEME[i-1];
+					A1[5][j] = CHANGEME[i-mx*my-1];
+					A1[6][j] = CHANGEME[i+mx-1];
+					A1[7][j] = CHANGEME[i-mx*(my-1)-1];
+					B1[2][j] = CHANGEME[i-mx];
+					B1[3][j] = CHANGEME[i+mx*(my-1)];
+					B1[4][j] = CHANGEME[i+1];
+					B1[5][j] = CHANGEME[i+mx*my+1];
+					B1[6][j] = CHANGEME[i-mx+1];
+					B1[7][j] = CHANGEME[i+mx*(my-1)+1];
 				}else {
-					A1[2][j] = I[i-mx];
-					A1[3][j] = I[i-mx*(my+1)];
-					A1[4][j] = I[i-1];
-					A1[5][j] = I[i-mx*my-1];
-					A1[6][j] = I[i-mx-1];
-					A1[7][j] = I[i-mx*(my+1)-1];
-					B1[2][j] = I[i+mx];
-					B1[3][j] = I[i+mx*(my+1)];
-					B1[4][j] = I[i+1];
-					B1[5][j] = I[i+mx*my+1];
-					B1[6][j] = I[i+mx+1];
-					B1[7][j] = I[i+mx*(my+1)+1];
+					A1[2][j] = CHANGEME[i-mx];
+					A1[3][j] = CHANGEME[i-mx*(my+1)];
+					A1[4][j] = CHANGEME[i-1];
+					A1[5][j] = CHANGEME[i-mx*my-1];
+					A1[6][j] = CHANGEME[i-mx-1];
+					A1[7][j] = CHANGEME[i-mx*(my+1)-1];
+					B1[2][j] = CHANGEME[i+mx];
+					B1[3][j] = CHANGEME[i+mx*(my+1)];
+					B1[4][j] = CHANGEME[i+1];
+					B1[5][j] = CHANGEME[i+mx*my+1];
+					B1[6][j] = CHANGEME[i+mx+1];
+					B1[7][j] = CHANGEME[i+mx*(my+1)+1];
 				}
 			}
 
@@ -1936,7 +1935,7 @@ static void* look_neigbourhood_surf( void* ptr ){
 		for (k=start; k<end; k++) {
 			i = M[k];
 
-			lv1 = I[i];
+			lv1 = CHANGEME[i];
 			if ( (lv1>V1a[j]) && (lv1>V1b[j]) ) {
 
 				tomo->F[i] = 1;
@@ -1957,7 +1956,7 @@ static void* look_neigbourhood_line( void* ptr ){
 
     typedef struct{
 //inputs
-    float* I;
+    float* CHANGEME;
 	float* V1x;
 	float* V1y;
 	float* V1z;
@@ -1989,7 +1988,7 @@ static void* look_neigbourhood_line( void* ptr ){
 	float** K2;
 	unsigned char lock = 0x01;
 	Tomos* tomo = (Tomos*)ptr;
-	float* I = tomo->I;
+	float* CHANGEME = tomo->CHANGEME;
 	float* V1x = tomo->V1x;
 	float* V1y = tomo->V1y;
 	float* V1z = tomo->V1z;
@@ -2042,8 +2041,8 @@ static void* look_neigbourhood_line( void* ptr ){
 
 
 
-			lv1 = I[i];
-			//printf("I[%d] vale %f\n",i,I[i]);
+			lv1 = CHANGEME[i];
+			//printf("CHANGEME[%d] vale %f\n",i,CHANGEME[i]);
 			//printf("lv1 vale %f\n",lv1);
 
 			K1[0][j] = fabs( V1x[i] * INTER_FACTOR );
@@ -2060,116 +2059,116 @@ static void* look_neigbourhood_line( void* ptr ){
 			A1[0][j] = lv1;
 			B1[0][j] = lv1;
 			if (V1x[i]>=0) {
-				A1[1][j] = I[i+mx*my];
-				B1[1][j] = I[i-mx*my];
+				A1[1][j] = CHANGEME[i+mx*my];
+				B1[1][j] = CHANGEME[i-mx*my];
 				if ( (V1y[i]>=0) && (V1z[i]>=0) ) {
-					A1[2][j] = I[i+mx];
-					A1[3][j] = I[i+mx*(my+1)];
-					A1[4][j] = I[i+1];
-					A1[5][j] = I[i+mx*my+1];
-					A1[6][j] = I[i+mx+1];
-					A1[7][j] = I[i+mx*(my+1)+1];
-					B1[2][j] = I[i-mx];
-					B1[3][j] = I[i-mx*(my+1)];
-					B1[4][j] = I[i-1];
-					B1[5][j] = I[i-mx*my-1];
-					B1[6][j] = I[i-mx-1];					
-					B1[7][j] = I[i-mx*(my+1)-1];
+					A1[2][j] = CHANGEME[i+mx];
+					A1[3][j] = CHANGEME[i+mx*(my+1)];
+					A1[4][j] = CHANGEME[i+1];
+					A1[5][j] = CHANGEME[i+mx*my+1];
+					A1[6][j] = CHANGEME[i+mx+1];
+					A1[7][j] = CHANGEME[i+mx*(my+1)+1];
+					B1[2][j] = CHANGEME[i-mx];
+					B1[3][j] = CHANGEME[i-mx*(my+1)];
+					B1[4][j] = CHANGEME[i-1];
+					B1[5][j] = CHANGEME[i-mx*my-1];
+					B1[6][j] = CHANGEME[i-mx-1];					
+					B1[7][j] = CHANGEME[i-mx*(my+1)-1];
 				}else if ( (V1y[i]<0) && (V1z[i]>=0) ) {
-					A1[2][j] = I[i-mx];
-					A1[3][j] = I[i+mx*(my-1)];
-					A1[4][j] = I[i+1];
-					A1[5][j] = I[i+mx*my+1];
-					A1[6][j] = I[i-mx+1];
-					A1[7][j] = I[i+mx*(my-1)+1];
-					B1[2][j] = I[i+mx];
-					B1[3][j] = I[i-mx*(my-1)];
-					B1[4][j] = I[i-1];
-					B1[5][j] = I[i-mx*my-1];
-					B1[6][j] = I[i+mx-1];
-					B1[7][j] = I[i-mx*(my-1)-1];
+					A1[2][j] = CHANGEME[i-mx];
+					A1[3][j] = CHANGEME[i+mx*(my-1)];
+					A1[4][j] = CHANGEME[i+1];
+					A1[5][j] = CHANGEME[i+mx*my+1];
+					A1[6][j] = CHANGEME[i-mx+1];
+					A1[7][j] = CHANGEME[i+mx*(my-1)+1];
+					B1[2][j] = CHANGEME[i+mx];
+					B1[3][j] = CHANGEME[i-mx*(my-1)];
+					B1[4][j] = CHANGEME[i-1];
+					B1[5][j] = CHANGEME[i-mx*my-1];
+					B1[6][j] = CHANGEME[i+mx-1];
+					B1[7][j] = CHANGEME[i-mx*(my-1)-1];
 				}else if ( (V1y[i]>=0) && (V1z[i]<0) ) {
-					A1[2][j] = I[i+mx];
-					A1[3][j] = I[i+mx*(my+1)];
-					A1[4][j] = I[i+1];
-					A1[5][j] = I[i+mx*my+1];
-					A1[6][j] = I[i+mx+1];
-					A1[7][j] = I[i+mx*(my+1)+1];
-					B1[2][j] = I[i-mx];
-					B1[3][j] = I[i-mx*(my+1)];
-					B1[4][j] = I[i-1];
-					B1[5][j] = I[i-mx*my-1];
-					B1[6][j] = I[i-mx-1];
-					B1[7][j] = I[i-mx*(my+1)-1];
+					A1[2][j] = CHANGEME[i+mx];
+					A1[3][j] = CHANGEME[i+mx*(my+1)];
+					A1[4][j] = CHANGEME[i+1];
+					A1[5][j] = CHANGEME[i+mx*my+1];
+					A1[6][j] = CHANGEME[i+mx+1];
+					A1[7][j] = CHANGEME[i+mx*(my+1)+1];
+					B1[2][j] = CHANGEME[i-mx];
+					B1[3][j] = CHANGEME[i-mx*(my+1)];
+					B1[4][j] = CHANGEME[i-1];
+					B1[5][j] = CHANGEME[i-mx*my-1];
+					B1[6][j] = CHANGEME[i-mx-1];
+					B1[7][j] = CHANGEME[i-mx*(my+1)-1];
 				}else {
-					A1[2][j] = I[i-mx];
-					A1[3][j] = I[i+mx*(my-1)];
-					A1[4][j] = I[i+1];
-					A1[5][j] = I[i+mx*my+1];
-					A1[6][j] = I[i-mx+1];
-					A1[7][j] = I[i+mx*(my-1)+1];
-					B1[2][j] = I[i+mx];
-					B1[3][j] = I[i-mx*(my-1)];
-					B1[4][j] = I[i-1];
-					B1[5][j] = I[i-mx*my-1];
-					B1[6][j] = I[i+mx-1];
-					B1[7][j] = I[i-mx*(my-1)-1];
+					A1[2][j] = CHANGEME[i-mx];
+					A1[3][j] = CHANGEME[i+mx*(my-1)];
+					A1[4][j] = CHANGEME[i+1];
+					A1[5][j] = CHANGEME[i+mx*my+1];
+					A1[6][j] = CHANGEME[i-mx+1];
+					A1[7][j] = CHANGEME[i+mx*(my-1)+1];
+					B1[2][j] = CHANGEME[i+mx];
+					B1[3][j] = CHANGEME[i-mx*(my-1)];
+					B1[4][j] = CHANGEME[i-1];
+					B1[5][j] = CHANGEME[i-mx*my-1];
+					B1[6][j] = CHANGEME[i+mx-1];
+					B1[7][j] = CHANGEME[i-mx*(my-1)-1];
 				}
 			}else {
-				A1[1][j] = I[i-mx*my];
-				B1[1][j] = I[i+mx*my];
+				A1[1][j] = CHANGEME[i-mx*my];
+				B1[1][j] = CHANGEME[i+mx*my];
 				if ( (V1y[i]>=0) && (V1z[i]>=0) ) {
-					A1[2][j] = I[i+mx];
-					A1[3][j] = I[i-mx*(my-1)];
-					A1[4][j] = I[i-1];
-					A1[5][j] = I[i-mx*my-1];
-					A1[6][j] = I[i+mx-1];
-					A1[7][j] = I[i-mx*(my-1)-1];
-					B1[2][j] = I[i-mx];
-					B1[3][j] = I[i+mx*(my-1)];
-					B1[4][j] = I[i+1];
-					B1[5][j] = I[i+mx*my+1];
-					B1[6][j] = I[i-mx+1];
-					B1[7][j] = I[i+mx*(my-1)+1];
+					A1[2][j] = CHANGEME[i+mx];
+					A1[3][j] = CHANGEME[i-mx*(my-1)];
+					A1[4][j] = CHANGEME[i-1];
+					A1[5][j] = CHANGEME[i-mx*my-1];
+					A1[6][j] = CHANGEME[i+mx-1];
+					A1[7][j] = CHANGEME[i-mx*(my-1)-1];
+					B1[2][j] = CHANGEME[i-mx];
+					B1[3][j] = CHANGEME[i+mx*(my-1)];
+					B1[4][j] = CHANGEME[i+1];
+					B1[5][j] = CHANGEME[i+mx*my+1];
+					B1[6][j] = CHANGEME[i-mx+1];
+					B1[7][j] = CHANGEME[i+mx*(my-1)+1];
 				}else if ( (V1y[i]<0) && (V1z[i]>=0) ) {
-					A1[2][j] = I[i-mx];
-					A1[3][j] = I[i-mx*(my+1)];
-					A1[4][j] = I[i-1];
-					A1[5][j] = I[i-mx*my-1];
-					A1[6][j] = I[i-mx-1];
-					A1[7][j] = I[i-mx*(my+1)-1];
-					B1[2][j] = I[i+mx];
-					B1[3][j] = I[i+mx*(my+1)];
-					B1[4][j] = I[i+1];
-					B1[5][j] = I[i+mx*my+1];
-					B1[6][j] = I[i+mx+1];
-					B1[7][j] = I[i+mx*(my+1)+1];
+					A1[2][j] = CHANGEME[i-mx];
+					A1[3][j] = CHANGEME[i-mx*(my+1)];
+					A1[4][j] = CHANGEME[i-1];
+					A1[5][j] = CHANGEME[i-mx*my-1];
+					A1[6][j] = CHANGEME[i-mx-1];
+					A1[7][j] = CHANGEME[i-mx*(my+1)-1];
+					B1[2][j] = CHANGEME[i+mx];
+					B1[3][j] = CHANGEME[i+mx*(my+1)];
+					B1[4][j] = CHANGEME[i+1];
+					B1[5][j] = CHANGEME[i+mx*my+1];
+					B1[6][j] = CHANGEME[i+mx+1];
+					B1[7][j] = CHANGEME[i+mx*(my+1)+1];
 				}else if ( (V1y[i]>=0) && (V1z[i]<0) ) {
-					A1[2][j] = I[i+mx];
-					A1[3][j] = I[i-mx*(my-1)];
-					A1[4][j] = I[i-1];
-					A1[5][j] = I[i-mx*my-1];
-					A1[6][j] = I[i+mx-1];
-					A1[7][j] = I[i-mx*(my-1)-1];
-					B1[2][j] = I[i-mx];
-					B1[3][j] = I[i+mx*(my-1)];
-					B1[4][j] = I[i+1];
-					B1[5][j] = I[i+mx*my+1];
-					B1[6][j] = I[i-mx+1];
-					B1[7][j] = I[i+mx*(my-1)+1];
+					A1[2][j] = CHANGEME[i+mx];
+					A1[3][j] = CHANGEME[i-mx*(my-1)];
+					A1[4][j] = CHANGEME[i-1];
+					A1[5][j] = CHANGEME[i-mx*my-1];
+					A1[6][j] = CHANGEME[i+mx-1];
+					A1[7][j] = CHANGEME[i-mx*(my-1)-1];
+					B1[2][j] = CHANGEME[i-mx];
+					B1[3][j] = CHANGEME[i+mx*(my-1)];
+					B1[4][j] = CHANGEME[i+1];
+					B1[5][j] = CHANGEME[i+mx*my+1];
+					B1[6][j] = CHANGEME[i-mx+1];
+					B1[7][j] = CHANGEME[i+mx*(my-1)+1];
 				}else {
-					A1[2][j] = I[i-mx];
-					A1[3][j] = I[i-mx*(my+1)];
-					A1[4][j] = I[i-1];
-					A1[5][j] = I[i-mx*my-1];
-					A1[6][j] = I[i-mx-1];					
-					A1[7][j] = I[i-mx*(my+1)-1];
-					B1[2][j] = I[i+mx];
-					B1[3][j] = I[i+mx*(my+1)];
-					B1[4][j] = I[i+1];
-					B1[5][j] = I[i+mx*my+1];
-					B1[6][j] = I[i+mx+1];
-					B1[7][j] = I[i+mx*(my+1)+1];
+					A1[2][j] = CHANGEME[i-mx];
+					A1[3][j] = CHANGEME[i-mx*(my+1)];
+					A1[4][j] = CHANGEME[i-1];
+					A1[5][j] = CHANGEME[i-mx*my-1];
+					A1[6][j] = CHANGEME[i-mx-1];					
+					A1[7][j] = CHANGEME[i-mx*(my+1)-1];
+					B1[2][j] = CHANGEME[i+mx];
+					B1[3][j] = CHANGEME[i+mx*(my+1)];
+					B1[4][j] = CHANGEME[i+1];
+					B1[5][j] = CHANGEME[i+mx*my+1];
+					B1[6][j] = CHANGEME[i+mx+1];
+					B1[7][j] = CHANGEME[i+mx*(my+1)+1];
 				}
 			}				
 
@@ -2212,123 +2211,123 @@ static void* look_neigbourhood_line( void* ptr ){
 		for (k=start; k<end; k++) {
 			i = M[k];
 
-			lv2 = I[i];
+			lv2 = CHANGEME[i];
 			K2[0][j] = fabs( V2x[i] * INTER_FACTOR );
 			K2[1][j] = fabs( V2y[i] * INTER_FACTOR );
 			K2[2][j] = fabs( V2z[i] * INTER_FACTOR );
 			A2[0][j] = lv2;
 			B2[0][j] = lv2;
 			if (V2x[i]>=0) {
-				A2[1][j] = I[i+mx*my];
-				B2[1][j] = I[i-mx*my];
+				A2[1][j] = CHANGEME[i+mx*my];
+				B2[1][j] = CHANGEME[i-mx*my];
 				if ( (V2y[i]>=0) && (V2z[i]>=0) ) {
-					A2[2][j] = I[i+mx];
-					A2[3][j] = I[i+mx*(my+1)];
-					A2[4][j] = I[i+1];
-					A2[5][j] = I[i+mx*my+1];
-					A2[6][j] = I[i+mx+1];
-					A2[7][j] = I[i+mx*(my+1)+1];
-					B2[2][j] = I[i-mx];
-					B2[3][j] = I[i-mx*(my+1)];
-					B2[4][j] = I[i-1];
-					B2[5][j] = I[i-mx*my-1];
-					B2[6][j] = I[i-mx-1];					
-					B2[7][j] = I[i-mx*(my+1)-1];
+					A2[2][j] = CHANGEME[i+mx];
+					A2[3][j] = CHANGEME[i+mx*(my+1)];
+					A2[4][j] = CHANGEME[i+1];
+					A2[5][j] = CHANGEME[i+mx*my+1];
+					A2[6][j] = CHANGEME[i+mx+1];
+					A2[7][j] = CHANGEME[i+mx*(my+1)+1];
+					B2[2][j] = CHANGEME[i-mx];
+					B2[3][j] = CHANGEME[i-mx*(my+1)];
+					B2[4][j] = CHANGEME[i-1];
+					B2[5][j] = CHANGEME[i-mx*my-1];
+					B2[6][j] = CHANGEME[i-mx-1];					
+					B2[7][j] = CHANGEME[i-mx*(my+1)-1];
 				}else if ( (V2y[i]<0) && (V2z[i]>=0) ) {
-					A2[2][j] = I[i-mx];
-					A2[3][j] = I[i+mx*(my-1)];
-					A2[4][j] = I[i+1];
-					A2[5][j] = I[i+mx*my+1];
-					A2[6][j] = I[i-mx+1];
-					A2[7][j] = I[i+mx*(my-1)+1];
-					B2[2][j] = I[i+mx];
-					B2[3][j] = I[i-mx*(my-1)];
-					B2[4][j] = I[i-1];
-					B2[5][j] = I[i-mx*my-1];
-					B2[6][j] = I[i+mx-1];
-					B2[7][j] = I[i-mx*(my-1)-1];
+					A2[2][j] = CHANGEME[i-mx];
+					A2[3][j] = CHANGEME[i+mx*(my-1)];
+					A2[4][j] = CHANGEME[i+1];
+					A2[5][j] = CHANGEME[i+mx*my+1];
+					A2[6][j] = CHANGEME[i-mx+1];
+					A2[7][j] = CHANGEME[i+mx*(my-1)+1];
+					B2[2][j] = CHANGEME[i+mx];
+					B2[3][j] = CHANGEME[i-mx*(my-1)];
+					B2[4][j] = CHANGEME[i-1];
+					B2[5][j] = CHANGEME[i-mx*my-1];
+					B2[6][j] = CHANGEME[i+mx-1];
+					B2[7][j] = CHANGEME[i-mx*(my-1)-1];
 				}else if ( (V2y[i]>=0) && (V2z[i]<0) ) {
-					A2[2][j] = I[i+mx];
-					A2[3][j] = I[i+mx*(my+1)];
-					A2[4][j] = I[i+1];
-					A2[5][j] = I[i+mx*my+1];
-					A2[6][j] = I[i+mx+1];
-					A2[7][j] = I[i+mx*(my+1)+1];
-					B2[2][j] = I[i-mx];
-					B2[3][j] = I[i-mx*(my+1)];
-					B2[4][j] = I[i-1];
-					B2[5][j] = I[i-mx*my-1];
-					B2[6][j] = I[i-mx-1];
-					B2[7][j] = I[i-mx*(my+1)-1];
+					A2[2][j] = CHANGEME[i+mx];
+					A2[3][j] = CHANGEME[i+mx*(my+1)];
+					A2[4][j] = CHANGEME[i+1];
+					A2[5][j] = CHANGEME[i+mx*my+1];
+					A2[6][j] = CHANGEME[i+mx+1];
+					A2[7][j] = CHANGEME[i+mx*(my+1)+1];
+					B2[2][j] = CHANGEME[i-mx];
+					B2[3][j] = CHANGEME[i-mx*(my+1)];
+					B2[4][j] = CHANGEME[i-1];
+					B2[5][j] = CHANGEME[i-mx*my-1];
+					B2[6][j] = CHANGEME[i-mx-1];
+					B2[7][j] = CHANGEME[i-mx*(my+1)-1];
 				}else {
-					A2[2][j] = I[i-mx];
-					A2[3][j] = I[i+mx*(my-1)];
-					A2[4][j] = I[i+1];
-					A2[5][j] = I[i+mx*my+1];
-					A2[6][j] = I[i-mx+1];
-					A2[7][j] = I[i+mx*(my-1)+1];
-					B2[2][j] = I[i+mx];
-					B2[3][j] = I[i-mx*(my-1)];
-					B2[4][j] = I[i-1];
-					B2[5][j] = I[i-mx*my-1];
-					B2[6][j] = I[i+mx-1];
-					B2[7][j] = I[i-mx*(my-1)-1];
+					A2[2][j] = CHANGEME[i-mx];
+					A2[3][j] = CHANGEME[i+mx*(my-1)];
+					A2[4][j] = CHANGEME[i+1];
+					A2[5][j] = CHANGEME[i+mx*my+1];
+					A2[6][j] = CHANGEME[i-mx+1];
+					A2[7][j] = CHANGEME[i+mx*(my-1)+1];
+					B2[2][j] = CHANGEME[i+mx];
+					B2[3][j] = CHANGEME[i-mx*(my-1)];
+					B2[4][j] = CHANGEME[i-1];
+					B2[5][j] = CHANGEME[i-mx*my-1];
+					B2[6][j] = CHANGEME[i+mx-1];
+					B2[7][j] = CHANGEME[i-mx*(my-1)-1];
 				}
 			}else {
-				A2[1][j] = I[i-mx*my];
-				B2[1][j] = I[i+mx*my];
+				A2[1][j] = CHANGEME[i-mx*my];
+				B2[1][j] = CHANGEME[i+mx*my];
 				if ( (V2y[i]>=0) && (V2z[i]>=0) ) {
-					A2[2][j] = I[i+mx];
-					A2[3][j] = I[i-mx*(my-1)];
-					A2[4][j] = I[i-1];
-					A2[5][j] = I[i-mx*my-1];
-					A2[6][j] = I[i+mx-1];
-					A2[7][j] = I[i-mx*(my-1)-1];
-					B2[2][j] = I[i-mx];
-					B2[3][j] = I[i+mx*(my-1)];
-					B2[4][j] = I[i+1];
-					B2[5][j] = I[i+mx*my+1];
-					B2[6][j] = I[i-mx+1];
-					B2[7][j] = I[i+mx*(my-1)+1];
+					A2[2][j] = CHANGEME[i+mx];
+					A2[3][j] = CHANGEME[i-mx*(my-1)];
+					A2[4][j] = CHANGEME[i-1];
+					A2[5][j] = CHANGEME[i-mx*my-1];
+					A2[6][j] = CHANGEME[i+mx-1];
+					A2[7][j] = CHANGEME[i-mx*(my-1)-1];
+					B2[2][j] = CHANGEME[i-mx];
+					B2[3][j] = CHANGEME[i+mx*(my-1)];
+					B2[4][j] = CHANGEME[i+1];
+					B2[5][j] = CHANGEME[i+mx*my+1];
+					B2[6][j] = CHANGEME[i-mx+1];
+					B2[7][j] = CHANGEME[i+mx*(my-1)+1];
 				}else if ( (V2y[i]<0) && (V2z[i]>=0) ) {
-					A2[2][j] = I[i-mx];
-					A2[3][j] = I[i-mx*(my+1)];
-					A2[4][j] = I[i-1];
-					A2[5][j] = I[i-mx*my-1];
-					A2[6][j] = I[i-mx-1];
-					A2[7][j] = I[i-mx*(my+1)-1];
-					B2[2][j] = I[i+mx];
-					B2[3][j] = I[i+mx*(my+1)];
-					B2[4][j] = I[i+1];
-					B2[5][j] = I[i+mx*my+1];
-					B2[6][j] = I[i+mx+1];
-					B2[7][j] = I[i+mx*(my+1)+1];
+					A2[2][j] = CHANGEME[i-mx];
+					A2[3][j] = CHANGEME[i-mx*(my+1)];
+					A2[4][j] = CHANGEME[i-1];
+					A2[5][j] = CHANGEME[i-mx*my-1];
+					A2[6][j] = CHANGEME[i-mx-1];
+					A2[7][j] = CHANGEME[i-mx*(my+1)-1];
+					B2[2][j] = CHANGEME[i+mx];
+					B2[3][j] = CHANGEME[i+mx*(my+1)];
+					B2[4][j] = CHANGEME[i+1];
+					B2[5][j] = CHANGEME[i+mx*my+1];
+					B2[6][j] = CHANGEME[i+mx+1];
+					B2[7][j] = CHANGEME[i+mx*(my+1)+1];
 				}else if ( (V2y[i]>=0) && (V2z[i]<0) ) {
-					A2[2][j] = I[i+mx];
-					A2[3][j] = I[i-mx*(my-1)];
-					A2[4][j] = I[i-1];
-					A2[5][j] = I[i-mx*my-1];
-					A2[6][j] = I[i+mx-1];
-					A2[7][j] = I[i-mx*(my-1)-1];
-					B2[2][j] = I[i-mx];
-					B2[3][j] = I[i+mx*(my-1)];
-					B2[4][j] = I[i+1];
-					B2[5][j] = I[i+mx*my+1];
-					B2[6][j] = I[i-mx+1];
-					B2[7][j] = I[i+mx*(my-1)+1];
+					A2[2][j] = CHANGEME[i+mx];
+					A2[3][j] = CHANGEME[i-mx*(my-1)];
+					A2[4][j] = CHANGEME[i-1];
+					A2[5][j] = CHANGEME[i-mx*my-1];
+					A2[6][j] = CHANGEME[i+mx-1];
+					A2[7][j] = CHANGEME[i-mx*(my-1)-1];
+					B2[2][j] = CHANGEME[i-mx];
+					B2[3][j] = CHANGEME[i+mx*(my-1)];
+					B2[4][j] = CHANGEME[i+1];
+					B2[5][j] = CHANGEME[i+mx*my+1];
+					B2[6][j] = CHANGEME[i-mx+1];
+					B2[7][j] = CHANGEME[i+mx*(my-1)+1];
 				}else {
-					A2[2][j] = I[i-mx];
-					A2[3][j] = I[i-mx*(my+1)];
-					A2[4][j] = I[i-1];
-					A2[5][j] = I[i-mx*my-1];
-					A2[6][j] = I[i-mx-1];					
-					A2[7][j] = I[i-mx*(my+1)-1];
-					B2[2][j] = I[i+mx];
-					B2[3][j] = I[i+mx*(my+1)];
-					B2[4][j] = I[i+1];
-					B2[5][j] = I[i+mx*my+1];
-					B2[6][j] = I[i+mx+1];
-					B2[7][j] = I[i+mx*(my+1)+1];
+					A2[2][j] = CHANGEME[i-mx];
+					A2[3][j] = CHANGEME[i-mx*(my+1)];
+					A2[4][j] = CHANGEME[i-1];
+					A2[5][j] = CHANGEME[i-mx*my-1];
+					A2[6][j] = CHANGEME[i-mx-1];					
+					A2[7][j] = CHANGEME[i-mx*(my+1)-1];
+					B2[2][j] = CHANGEME[i+mx];
+					B2[3][j] = CHANGEME[i+mx*(my+1)];
+					B2[4][j] = CHANGEME[i+1];
+					B2[5][j] = CHANGEME[i+mx*my+1];
+					B2[6][j] = CHANGEME[i+mx+1];
+					B2[7][j] = CHANGEME[i+mx*(my+1)+1];
 				}
 			}				
 
@@ -2367,7 +2366,7 @@ static void* look_neigbourhood_line( void* ptr ){
 		for (k=start; k<end; k++) {
 			i = M[k];
 
-			lv1 = I[i];
+			lv1 = CHANGEME[i];
 			if ( (lv1>V1a[j]) && (lv1>V1b[j]) && (lv1>V2a[j]) && (lv1>V2b[j]) ) {
 
 				tomo->F[i] = 1;
@@ -2388,7 +2387,7 @@ static void* look_neigbourhood_point( void* ptr ){
 
     typedef struct{
 //inputs
-    float* I;
+    float* CHANGEME;
 	float* V1x;
 	float* V1y;
 	float* V1z;
@@ -2429,7 +2428,7 @@ static void* look_neigbourhood_point( void* ptr ){
 	float** K3;
 	unsigned char lock = 0x01;
 	Tomos* tomo = (Tomos*)ptr;
-	float* I = tomo->I;
+	float* CHANGEME = tomo->CHANGEME;
 	float* V1x = tomo->V1x;
 	float* V1y = tomo->V1y;
 	float* V1z = tomo->V1z;
@@ -2489,8 +2488,8 @@ static void* look_neigbourhood_point( void* ptr ){
 			i = M[k];
 			//printf("k=%d, i=%d, j=%d\n",k,i,j);
 
-			lv1 = I[i];
-			//printf("I[%d] vale %f\n",i,I[i]);
+			lv1 = CHANGEME[i];
+			//printf("CHANGEME[%d] vale %f\n",i,CHANGEME[i]);
 			//printf("lv1 vale %f\n",lv1);
 
 			K1[0][j] = fabs( V1x[i] * INTER_FACTOR );
@@ -2507,116 +2506,116 @@ static void* look_neigbourhood_point( void* ptr ){
 			A1[0][j] = lv1;
 			B1[0][j] = lv1;
 			if (V1x[i]>=0) {
-				A1[1][j] = I[i+mx*my];
-				B1[1][j] = I[i-mx*my];
+				A1[1][j] = CHANGEME[i+mx*my];
+				B1[1][j] = CHANGEME[i-mx*my];
 				if ( (V1y[i]>=0) && (V1z[i]>=0) ) {
-					A1[2][j] = I[i+mx];
-					A1[3][j] = I[i+mx*(my+1)];
-					A1[4][j] = I[i+1];
-					A1[5][j] = I[i+mx*my+1];
-					A1[6][j] = I[i+mx+1];
-					A1[7][j] = I[i+mx*(my+1)+1];
-					B1[2][j] = I[i-mx];
-					B1[3][j] = I[i-mx*(my+1)];
-					B1[4][j] = I[i-1];
-					B1[5][j] = I[i-mx*my-1];
-					B1[6][j] = I[i-mx-1];
-					B1[7][j] = I[i-mx*(my+1)-1];
+					A1[2][j] = CHANGEME[i+mx];
+					A1[3][j] = CHANGEME[i+mx*(my+1)];
+					A1[4][j] = CHANGEME[i+1];
+					A1[5][j] = CHANGEME[i+mx*my+1];
+					A1[6][j] = CHANGEME[i+mx+1];
+					A1[7][j] = CHANGEME[i+mx*(my+1)+1];
+					B1[2][j] = CHANGEME[i-mx];
+					B1[3][j] = CHANGEME[i-mx*(my+1)];
+					B1[4][j] = CHANGEME[i-1];
+					B1[5][j] = CHANGEME[i-mx*my-1];
+					B1[6][j] = CHANGEME[i-mx-1];
+					B1[7][j] = CHANGEME[i-mx*(my+1)-1];
 				}else if ( (V1y[i]<0) && (V1z[i]>=0) ) {
-					A1[2][j] = I[i-mx];
-					A1[3][j] = I[i+mx*(my-1)];
-					A1[4][j] = I[i+1];
-					A1[5][j] = I[i+mx*my+1];
-					A1[6][j] = I[i-mx+1];
-					A1[7][j] = I[i+mx*(my-1)+1];
-					B1[2][j] = I[i+mx];
-					B1[3][j] = I[i-mx*(my-1)];
-					B1[4][j] = I[i-1];
-					B1[5][j] = I[i-mx*my-1];
-					B1[6][j] = I[i+mx-1];
-					B1[7][j] = I[i-mx*(my-1)-1];
+					A1[2][j] = CHANGEME[i-mx];
+					A1[3][j] = CHANGEME[i+mx*(my-1)];
+					A1[4][j] = CHANGEME[i+1];
+					A1[5][j] = CHANGEME[i+mx*my+1];
+					A1[6][j] = CHANGEME[i-mx+1];
+					A1[7][j] = CHANGEME[i+mx*(my-1)+1];
+					B1[2][j] = CHANGEME[i+mx];
+					B1[3][j] = CHANGEME[i-mx*(my-1)];
+					B1[4][j] = CHANGEME[i-1];
+					B1[5][j] = CHANGEME[i-mx*my-1];
+					B1[6][j] = CHANGEME[i+mx-1];
+					B1[7][j] = CHANGEME[i-mx*(my-1)-1];
 				}else if ( (V1y[i]>=0) && (V1z[i]<0) ) {
-					A1[2][j] = I[i+mx];
-					A1[3][j] = I[i+mx*(my+1)];
-					A1[4][j] = I[i+1];
-					A1[5][j] = I[i+mx*my+1];
-					A1[6][j] = I[i+mx+1];
-					A1[7][j] = I[i+mx*(my+1)+1];
-					B1[2][j] = I[i-mx];
-					B1[3][j] = I[i-mx*(my+1)];
-					B1[4][j] = I[i-1];
-					B1[5][j] = I[i-mx*my-1];
-					B1[6][j] = I[i-mx-1];
-					B1[7][j] = I[i-mx*(my+1)-1];
+					A1[2][j] = CHANGEME[i+mx];
+					A1[3][j] = CHANGEME[i+mx*(my+1)];
+					A1[4][j] = CHANGEME[i+1];
+					A1[5][j] = CHANGEME[i+mx*my+1];
+					A1[6][j] = CHANGEME[i+mx+1];
+					A1[7][j] = CHANGEME[i+mx*(my+1)+1];
+					B1[2][j] = CHANGEME[i-mx];
+					B1[3][j] = CHANGEME[i-mx*(my+1)];
+					B1[4][j] = CHANGEME[i-1];
+					B1[5][j] = CHANGEME[i-mx*my-1];
+					B1[6][j] = CHANGEME[i-mx-1];
+					B1[7][j] = CHANGEME[i-mx*(my+1)-1];
 				}else {
-					A1[2][j] = I[i-mx];
-					A1[3][j] = I[i+mx*(my-1)];
-					A1[4][j] = I[i+1];
-					A1[5][j] = I[i+mx*my+1];
-					A1[6][j] = I[i-mx+1];
-					A1[7][j] = I[i+mx*(my-1)+1];
-					B1[2][j] = I[i+mx];
-					B1[3][j] = I[i-mx*(my-1)];
-					B1[4][j] = I[i-1];
-					B1[5][j] = I[i-mx*my-1];
-					B1[6][j] = I[i+mx-1];
-					B1[7][j] = I[i-mx*(my-1)-1];
+					A1[2][j] = CHANGEME[i-mx];
+					A1[3][j] = CHANGEME[i+mx*(my-1)];
+					A1[4][j] = CHANGEME[i+1];
+					A1[5][j] = CHANGEME[i+mx*my+1];
+					A1[6][j] = CHANGEME[i-mx+1];
+					A1[7][j] = CHANGEME[i+mx*(my-1)+1];
+					B1[2][j] = CHANGEME[i+mx];
+					B1[3][j] = CHANGEME[i-mx*(my-1)];
+					B1[4][j] = CHANGEME[i-1];
+					B1[5][j] = CHANGEME[i-mx*my-1];
+					B1[6][j] = CHANGEME[i+mx-1];
+					B1[7][j] = CHANGEME[i-mx*(my-1)-1];
 				}
 			}else {
-				A1[1][j] = I[i-mx*my];
-				B1[1][j] = I[i+mx*my];
+				A1[1][j] = CHANGEME[i-mx*my];
+				B1[1][j] = CHANGEME[i+mx*my];
 				if ( (V1y[i]>=0) && (V1z[i]>=0) ) {
-					A1[2][j] = I[i+mx];
-					A1[3][j] = I[i-mx*(my-1)];
-					A1[4][j] = I[i-1];
-					A1[5][j] = I[i-mx*my-1];
-					A1[6][j] = I[i+mx-1];
-					A1[7][j] = I[i-mx*(my-1)-1];
-					B1[2][j] = I[i-mx];
-					B1[3][j] = I[i+mx*(my-1)];
-					B1[4][j] = I[i+1];
-					B1[5][j] = I[i+mx*my+1];
-					B1[6][j] = I[i-mx+1];
-					B1[7][j] = I[i+mx*(my-1)+1];
+					A1[2][j] = CHANGEME[i+mx];
+					A1[3][j] = CHANGEME[i-mx*(my-1)];
+					A1[4][j] = CHANGEME[i-1];
+					A1[5][j] = CHANGEME[i-mx*my-1];
+					A1[6][j] = CHANGEME[i+mx-1];
+					A1[7][j] = CHANGEME[i-mx*(my-1)-1];
+					B1[2][j] = CHANGEME[i-mx];
+					B1[3][j] = CHANGEME[i+mx*(my-1)];
+					B1[4][j] = CHANGEME[i+1];
+					B1[5][j] = CHANGEME[i+mx*my+1];
+					B1[6][j] = CHANGEME[i-mx+1];
+					B1[7][j] = CHANGEME[i+mx*(my-1)+1];
 				}else if ( (V1y[i]<0) && (V1z[i]>=0) ) {
-					A1[2][j] = I[i-mx];
-					A1[3][j] = I[i-mx*(my+1)];
-					A1[4][j] = I[i-1];
-					A1[5][j] = I[i-mx*my-1];
-					A1[6][j] = I[i-mx-1];
-					A1[7][j] = I[i-mx*(my+1)-1];
-					B1[2][j] = I[i+mx];
-					B1[3][j] = I[i+mx*(my+1)];
-					B1[4][j] = I[i+1];
-					B1[5][j] = I[i+mx*my+1];
-					B1[6][j] = I[i+mx+1];
-					B1[7][j] = I[i+mx*(my+1)+1];
+					A1[2][j] = CHANGEME[i-mx];
+					A1[3][j] = CHANGEME[i-mx*(my+1)];
+					A1[4][j] = CHANGEME[i-1];
+					A1[5][j] = CHANGEME[i-mx*my-1];
+					A1[6][j] = CHANGEME[i-mx-1];
+					A1[7][j] = CHANGEME[i-mx*(my+1)-1];
+					B1[2][j] = CHANGEME[i+mx];
+					B1[3][j] = CHANGEME[i+mx*(my+1)];
+					B1[4][j] = CHANGEME[i+1];
+					B1[5][j] = CHANGEME[i+mx*my+1];
+					B1[6][j] = CHANGEME[i+mx+1];
+					B1[7][j] = CHANGEME[i+mx*(my+1)+1];
 				}else if ( (V1y[i]>=0) && (V1z[i]<0) ) {
-					A1[2][j] = I[i+mx];
-					A1[3][j] = I[i-mx*(my-1)];
-					A1[4][j] = I[i-1];
-					A1[5][j] = I[i-mx*my-1];
-					A1[6][j] = I[i+mx-1];
-					A1[7][j] = I[i-mx*(my-1)-1];
-					B1[2][j] = I[i-mx];
-					B1[3][j] = I[i+mx*(my-1)];
-					B1[4][j] = I[i+1];
-					B1[5][j] = I[i+mx*my+1];
-					B1[6][j] = I[i-mx+1];
-					B1[7][j] = I[i+mx*(my-1)+1];
+					A1[2][j] = CHANGEME[i+mx];
+					A1[3][j] = CHANGEME[i-mx*(my-1)];
+					A1[4][j] = CHANGEME[i-1];
+					A1[5][j] = CHANGEME[i-mx*my-1];
+					A1[6][j] = CHANGEME[i+mx-1];
+					A1[7][j] = CHANGEME[i-mx*(my-1)-1];
+					B1[2][j] = CHANGEME[i-mx];
+					B1[3][j] = CHANGEME[i+mx*(my-1)];
+					B1[4][j] = CHANGEME[i+1];
+					B1[5][j] = CHANGEME[i+mx*my+1];
+					B1[6][j] = CHANGEME[i-mx+1];
+					B1[7][j] = CHANGEME[i+mx*(my-1)+1];
 				}else {
-					A1[2][j] = I[i-mx];
-					A1[3][j] = I[i-mx*(my+1)];
-					A1[4][j] = I[i-1];
-					A1[5][j] = I[i-mx*my-1];
-					A1[6][j] = I[i-mx-1];
-					A1[7][j] = I[i-mx*(my+1)-1];
-					B1[2][j] = I[i+mx];
-					B1[3][j] = I[i+mx*(my+1)];
-					B1[4][j] = I[i+1];
-					B1[5][j] = I[i+mx*my+1];
-					B1[6][j] = I[i+mx+1];
-					B1[7][j] = I[i+mx*(my+1)+1];
+					A1[2][j] = CHANGEME[i-mx];
+					A1[3][j] = CHANGEME[i-mx*(my+1)];
+					A1[4][j] = CHANGEME[i-1];
+					A1[5][j] = CHANGEME[i-mx*my-1];
+					A1[6][j] = CHANGEME[i-mx-1];
+					A1[7][j] = CHANGEME[i-mx*(my+1)-1];
+					B1[2][j] = CHANGEME[i+mx];
+					B1[3][j] = CHANGEME[i+mx*(my+1)];
+					B1[4][j] = CHANGEME[i+1];
+					B1[5][j] = CHANGEME[i+mx*my+1];
+					B1[6][j] = CHANGEME[i+mx+1];
+					B1[7][j] = CHANGEME[i+mx*(my+1)+1];
 				}
 			}
 
@@ -2660,123 +2659,123 @@ static void* look_neigbourhood_point( void* ptr ){
 		for (k=start; k<end; k++) {
 			i = M[k];
 
-			lv2 = I[i];
+			lv2 = CHANGEME[i];
 			K2[0][j] = fabs( V2x[i] * INTER_FACTOR );
 			K2[1][j] = fabs( V2y[i] * INTER_FACTOR );
 			K2[2][j] = fabs( V2z[i] * INTER_FACTOR );
 			A2[0][j] = lv2;
 			B2[0][j] = lv2;
 			if (V2x[i]>=0) {
-				A2[1][j] = I[i+mx*my];
-				B2[1][j] = I[i-mx*my];
+				A2[1][j] = CHANGEME[i+mx*my];
+				B2[1][j] = CHANGEME[i-mx*my];
 				if ( (V2y[i]>=0) && (V2z[i]>=0) ) {
-					A2[2][j] = I[i+mx];
-					A2[3][j] = I[i+mx*(my+1)];
-					A2[4][j] = I[i+1];
-					A2[5][j] = I[i+mx*my+1];
-					A2[6][j] = I[i+mx+1];
-					A2[7][j] = I[i+mx*(my+1)+1];
-					B2[2][j] = I[i-mx];
-					B2[3][j] = I[i-mx*(my+1)];
-					B2[4][j] = I[i-1];
-					B2[5][j] = I[i-mx*my-1];
-					B2[6][j] = I[i-mx-1];
-					B2[7][j] = I[i-mx*(my+1)-1];
+					A2[2][j] = CHANGEME[i+mx];
+					A2[3][j] = CHANGEME[i+mx*(my+1)];
+					A2[4][j] = CHANGEME[i+1];
+					A2[5][j] = CHANGEME[i+mx*my+1];
+					A2[6][j] = CHANGEME[i+mx+1];
+					A2[7][j] = CHANGEME[i+mx*(my+1)+1];
+					B2[2][j] = CHANGEME[i-mx];
+					B2[3][j] = CHANGEME[i-mx*(my+1)];
+					B2[4][j] = CHANGEME[i-1];
+					B2[5][j] = CHANGEME[i-mx*my-1];
+					B2[6][j] = CHANGEME[i-mx-1];
+					B2[7][j] = CHANGEME[i-mx*(my+1)-1];
 				}else if ( (V2y[i]<0) && (V2z[i]>=0) ) {
-					A2[2][j] = I[i-mx];
-					A2[3][j] = I[i+mx*(my-1)];
-					A2[4][j] = I[i+1];
-					A2[5][j] = I[i+mx*my+1];
-					A2[6][j] = I[i-mx+1];
-					A2[7][j] = I[i+mx*(my-1)+1];
-					B2[2][j] = I[i+mx];
-					B2[3][j] = I[i-mx*(my-1)];
-					B2[4][j] = I[i-1];
-					B2[5][j] = I[i-mx*my-1];
-					B2[6][j] = I[i+mx-1];
-					B2[7][j] = I[i-mx*(my-1)-1];
+					A2[2][j] = CHANGEME[i-mx];
+					A2[3][j] = CHANGEME[i+mx*(my-1)];
+					A2[4][j] = CHANGEME[i+1];
+					A2[5][j] = CHANGEME[i+mx*my+1];
+					A2[6][j] = CHANGEME[i-mx+1];
+					A2[7][j] = CHANGEME[i+mx*(my-1)+1];
+					B2[2][j] = CHANGEME[i+mx];
+					B2[3][j] = CHANGEME[i-mx*(my-1)];
+					B2[4][j] = CHANGEME[i-1];
+					B2[5][j] = CHANGEME[i-mx*my-1];
+					B2[6][j] = CHANGEME[i+mx-1];
+					B2[7][j] = CHANGEME[i-mx*(my-1)-1];
 				}else if ( (V2y[i]>=0) && (V2z[i]<0) ) {
-					A2[2][j] = I[i+mx];
-					A2[3][j] = I[i+mx*(my+1)];
-					A2[4][j] = I[i+1];
-					A2[5][j] = I[i+mx*my+1];
-					A2[6][j] = I[i+mx+1];
-					A2[7][j] = I[i+mx*(my+1)+1];
-					B2[2][j] = I[i-mx];
-					B2[3][j] = I[i-mx*(my+1)];
-					B2[4][j] = I[i-1];
-					B2[5][j] = I[i-mx*my-1];
-					B2[6][j] = I[i-mx-1];
-					B2[7][j] = I[i-mx*(my+1)-1];
+					A2[2][j] = CHANGEME[i+mx];
+					A2[3][j] = CHANGEME[i+mx*(my+1)];
+					A2[4][j] = CHANGEME[i+1];
+					A2[5][j] = CHANGEME[i+mx*my+1];
+					A2[6][j] = CHANGEME[i+mx+1];
+					A2[7][j] = CHANGEME[i+mx*(my+1)+1];
+					B2[2][j] = CHANGEME[i-mx];
+					B2[3][j] = CHANGEME[i-mx*(my+1)];
+					B2[4][j] = CHANGEME[i-1];
+					B2[5][j] = CHANGEME[i-mx*my-1];
+					B2[6][j] = CHANGEME[i-mx-1];
+					B2[7][j] = CHANGEME[i-mx*(my+1)-1];
 				}else {
-					A2[2][j] = I[i-mx];
-					A2[3][j] = I[i+mx*(my-1)];
-					A2[4][j] = I[i+1];
-					A2[5][j] = I[i+mx*my+1];
-					A2[6][j] = I[i-mx+1];
-					A2[7][j] = I[i+mx*(my-1)+1];
-					B2[2][j] = I[i+mx];
-					B2[3][j] = I[i-mx*(my-1)];
-					B2[4][j] = I[i-1];
-					B2[5][j] = I[i-mx*my-1];
-					B2[6][j] = I[i+mx-1];
-					B2[7][j] = I[i-mx*(my-1)-1];
+					A2[2][j] = CHANGEME[i-mx];
+					A2[3][j] = CHANGEME[i+mx*(my-1)];
+					A2[4][j] = CHANGEME[i+1];
+					A2[5][j] = CHANGEME[i+mx*my+1];
+					A2[6][j] = CHANGEME[i-mx+1];
+					A2[7][j] = CHANGEME[i+mx*(my-1)+1];
+					B2[2][j] = CHANGEME[i+mx];
+					B2[3][j] = CHANGEME[i-mx*(my-1)];
+					B2[4][j] = CHANGEME[i-1];
+					B2[5][j] = CHANGEME[i-mx*my-1];
+					B2[6][j] = CHANGEME[i+mx-1];
+					B2[7][j] = CHANGEME[i-mx*(my-1)-1];
 				}
 			}else {
-				A2[1][j] = I[i-mx*my];
-				B2[1][j] = I[i+mx*my];
+				A2[1][j] = CHANGEME[i-mx*my];
+				B2[1][j] = CHANGEME[i+mx*my];
 				if ( (V2y[i]>=0) && (V2z[i]>=0) ) {
-					A2[2][j] = I[i+mx];
-					A2[3][j] = I[i-mx*(my-1)];
-					A2[4][j] = I[i-1];
-					A2[5][j] = I[i-mx*my-1];
-					A2[6][j] = I[i+mx-1];
-					A2[7][j] = I[i-mx*(my-1)-1];
-					B2[2][j] = I[i-mx];
-					B2[3][j] = I[i+mx*(my-1)];
-					B2[4][j] = I[i+1];
-					B2[5][j] = I[i+mx*my+1];
-					B2[6][j] = I[i-mx+1];
-					B2[7][j] = I[i+mx*(my-1)+1];
+					A2[2][j] = CHANGEME[i+mx];
+					A2[3][j] = CHANGEME[i-mx*(my-1)];
+					A2[4][j] = CHANGEME[i-1];
+					A2[5][j] = CHANGEME[i-mx*my-1];
+					A2[6][j] = CHANGEME[i+mx-1];
+					A2[7][j] = CHANGEME[i-mx*(my-1)-1];
+					B2[2][j] = CHANGEME[i-mx];
+					B2[3][j] = CHANGEME[i+mx*(my-1)];
+					B2[4][j] = CHANGEME[i+1];
+					B2[5][j] = CHANGEME[i+mx*my+1];
+					B2[6][j] = CHANGEME[i-mx+1];
+					B2[7][j] = CHANGEME[i+mx*(my-1)+1];
 				}else if ( (V2y[i]<0) && (V2z[i]>=0) ) {
-					A2[2][j] = I[i-mx];
-					A2[3][j] = I[i-mx*(my+1)];
-					A2[4][j] = I[i-1];
-					A2[5][j] = I[i-mx*my-1];
-					A2[6][j] = I[i-mx-1];
-					A2[7][j] = I[i-mx*(my+1)-1];
-					B2[2][j] = I[i+mx];
-					B2[3][j] = I[i+mx*(my+1)];
-					B2[4][j] = I[i+1];
-					B2[5][j] = I[i+mx*my+1];
-					B2[6][j] = I[i+mx+1];
-					B2[7][j] = I[i+mx*(my+1)+1];
+					A2[2][j] = CHANGEME[i-mx];
+					A2[3][j] = CHANGEME[i-mx*(my+1)];
+					A2[4][j] = CHANGEME[i-1];
+					A2[5][j] = CHANGEME[i-mx*my-1];
+					A2[6][j] = CHANGEME[i-mx-1];
+					A2[7][j] = CHANGEME[i-mx*(my+1)-1];
+					B2[2][j] = CHANGEME[i+mx];
+					B2[3][j] = CHANGEME[i+mx*(my+1)];
+					B2[4][j] = CHANGEME[i+1];
+					B2[5][j] = CHANGEME[i+mx*my+1];
+					B2[6][j] = CHANGEME[i+mx+1];
+					B2[7][j] = CHANGEME[i+mx*(my+1)+1];
 				}else if ( (V2y[i]>=0) && (V2z[i]<0) ) {
-					A2[2][j] = I[i+mx];
-					A2[3][j] = I[i-mx*(my-1)];
-					A2[4][j] = I[i-1];
-					A2[5][j] = I[i-mx*my-1];
-					A2[6][j] = I[i+mx-1];
-					A2[7][j] = I[i-mx*(my-1)-1];
-					B2[2][j] = I[i-mx];
-					B2[3][j] = I[i+mx*(my-1)];
-					B2[4][j] = I[i+1];
-					B2[5][j] = I[i+mx*my+1];
-					B2[6][j] = I[i-mx+1];
-					B2[7][j] = I[i+mx*(my-1)+1];
+					A2[2][j] = CHANGEME[i+mx];
+					A2[3][j] = CHANGEME[i-mx*(my-1)];
+					A2[4][j] = CHANGEME[i-1];
+					A2[5][j] = CHANGEME[i-mx*my-1];
+					A2[6][j] = CHANGEME[i+mx-1];
+					A2[7][j] = CHANGEME[i-mx*(my-1)-1];
+					B2[2][j] = CHANGEME[i-mx];
+					B2[3][j] = CHANGEME[i+mx*(my-1)];
+					B2[4][j] = CHANGEME[i+1];
+					B2[5][j] = CHANGEME[i+mx*my+1];
+					B2[6][j] = CHANGEME[i-mx+1];
+					B2[7][j] = CHANGEME[i+mx*(my-1)+1];
 				}else {
-					A2[2][j] = I[i-mx];
-					A2[3][j] = I[i-mx*(my+1)];
-					A2[4][j] = I[i-1];
-					A2[5][j] = I[i-mx*my-1];
-					A2[6][j] = I[i-mx-1];
-					A2[7][j] = I[i-mx*(my+1)-1];
-					B2[2][j] = I[i+mx];
-					B2[3][j] = I[i+mx*(my+1)];
-					B2[4][j] = I[i+1];
-					B2[5][j] = I[i+mx*my+1];
-					B2[6][j] = I[i+mx+1];
-					B2[7][j] = I[i+mx*(my+1)+1];
+					A2[2][j] = CHANGEME[i-mx];
+					A2[3][j] = CHANGEME[i-mx*(my+1)];
+					A2[4][j] = CHANGEME[i-1];
+					A2[5][j] = CHANGEME[i-mx*my-1];
+					A2[6][j] = CHANGEME[i-mx-1];
+					A2[7][j] = CHANGEME[i-mx*(my+1)-1];
+					B2[2][j] = CHANGEME[i+mx];
+					B2[3][j] = CHANGEME[i+mx*(my+1)];
+					B2[4][j] = CHANGEME[i+1];
+					B2[5][j] = CHANGEME[i+mx*my+1];
+					B2[6][j] = CHANGEME[i+mx+1];
+					B2[7][j] = CHANGEME[i+mx*(my+1)+1];
 				}
 			}
 
@@ -2816,123 +2815,123 @@ static void* look_neigbourhood_point( void* ptr ){
 		for (k=start; k<end; k++) {
 			i = M[k];
 
-			lv3 = I[i];
+			lv3 = CHANGEME[i];
 			K3[0][j] = fabs( V3x[i] * INTER_FACTOR );
 			K3[1][j] = fabs( V3y[i] * INTER_FACTOR );
 			K3[2][j] = fabs( V3z[i] * INTER_FACTOR );
 			A3[0][j] = lv3;
 			B3[0][j] = lv3;
 			if (V3x[i]>=0) {
-				A3[1][j] = I[i+mx*my];
-				B3[1][j] = I[i-mx*my];
+				A3[1][j] = CHANGEME[i+mx*my];
+				B3[1][j] = CHANGEME[i-mx*my];
 				if ( (V3y[i]>=0) && (V3z[i]>=0) ) {
-					A3[2][j] = I[i+mx];
-					A3[3][j] = I[i+mx*(my+1)];
-					A3[4][j] = I[i+1];
-					A3[5][j] = I[i+mx*my+1];
-					A3[6][j] = I[i+mx+1];
-					A3[7][j] = I[i+mx*(my+1)+1];
-					B3[2][j] = I[i-mx];
-					B3[3][j] = I[i-mx*(my+1)];
-					B3[4][j] = I[i-1];
-					B3[5][j] = I[i-mx*my-1];
-					B3[6][j] = I[i-mx-1];
-					B3[7][j] = I[i-mx*(my+1)-1];
+					A3[2][j] = CHANGEME[i+mx];
+					A3[3][j] = CHANGEME[i+mx*(my+1)];
+					A3[4][j] = CHANGEME[i+1];
+					A3[5][j] = CHANGEME[i+mx*my+1];
+					A3[6][j] = CHANGEME[i+mx+1];
+					A3[7][j] = CHANGEME[i+mx*(my+1)+1];
+					B3[2][j] = CHANGEME[i-mx];
+					B3[3][j] = CHANGEME[i-mx*(my+1)];
+					B3[4][j] = CHANGEME[i-1];
+					B3[5][j] = CHANGEME[i-mx*my-1];
+					B3[6][j] = CHANGEME[i-mx-1];
+					B3[7][j] = CHANGEME[i-mx*(my+1)-1];
 				}else if ( (V3y[i]<0) && (V3z[i]>=0) ) {
-					A3[2][j] = I[i-mx];
-					A3[3][j] = I[i+mx*(my-1)];
-					A3[4][j] = I[i+1];
-					A3[5][j] = I[i+mx*my+1];
-					A3[6][j] = I[i-mx+1];
-					A3[7][j] = I[i+mx*(my-1)+1];
-					B3[2][j] = I[i+mx];
-					B3[3][j] = I[i-mx*(my-1)];
-					B3[4][j] = I[i-1];
-					B3[5][j] = I[i-mx*my-1];
-					B3[6][j] = I[i+mx-1];
-					B3[7][j] = I[i-mx*(my-1)-1];
+					A3[2][j] = CHANGEME[i-mx];
+					A3[3][j] = CHANGEME[i+mx*(my-1)];
+					A3[4][j] = CHANGEME[i+1];
+					A3[5][j] = CHANGEME[i+mx*my+1];
+					A3[6][j] = CHANGEME[i-mx+1];
+					A3[7][j] = CHANGEME[i+mx*(my-1)+1];
+					B3[2][j] = CHANGEME[i+mx];
+					B3[3][j] = CHANGEME[i-mx*(my-1)];
+					B3[4][j] = CHANGEME[i-1];
+					B3[5][j] = CHANGEME[i-mx*my-1];
+					B3[6][j] = CHANGEME[i+mx-1];
+					B3[7][j] = CHANGEME[i-mx*(my-1)-1];
 				}else if ( (V3y[i]>=0) && (V3z[i]<0) ) {
-					A3[2][j] = I[i+mx];
-					A3[3][j] = I[i+mx*(my+1)];
-					A3[4][j] = I[i+1];
-					A3[5][j] = I[i+mx*my+1];
-					A3[6][j] = I[i+mx+1];
-					A3[7][j] = I[i+mx*(my+1)+1];
-					B3[2][j] = I[i-mx];
-					B3[3][j] = I[i-mx*(my+1)];
-					B3[4][j] = I[i-1];
-					B3[5][j] = I[i-mx*my-1];
-					B3[6][j] = I[i-mx-1];
-					B3[7][j] = I[i-mx*(my+1)-1];
+					A3[2][j] = CHANGEME[i+mx];
+					A3[3][j] = CHANGEME[i+mx*(my+1)];
+					A3[4][j] = CHANGEME[i+1];
+					A3[5][j] = CHANGEME[i+mx*my+1];
+					A3[6][j] = CHANGEME[i+mx+1];
+					A3[7][j] = CHANGEME[i+mx*(my+1)+1];
+					B3[2][j] = CHANGEME[i-mx];
+					B3[3][j] = CHANGEME[i-mx*(my+1)];
+					B3[4][j] = CHANGEME[i-1];
+					B3[5][j] = CHANGEME[i-mx*my-1];
+					B3[6][j] = CHANGEME[i-mx-1];
+					B3[7][j] = CHANGEME[i-mx*(my+1)-1];
 				}else {
-					A3[2][j] = I[i-mx];
-					A3[3][j] = I[i+mx*(my-1)];
-					A3[4][j] = I[i+1];
-					A3[5][j] = I[i+mx*my+1];
-					A3[6][j] = I[i-mx+1];
-					A3[7][j] = I[i+mx*(my-1)+1];
-					B3[2][j] = I[i+mx];
-					B3[3][j] = I[i-mx*(my-1)];
-					B3[4][j] = I[i-1];
-					B3[5][j] = I[i-mx*my-1];
-					B3[6][j] = I[i+mx-1];
-					B3[7][j] = I[i-mx*(my-1)-1];
+					A3[2][j] = CHANGEME[i-mx];
+					A3[3][j] = CHANGEME[i+mx*(my-1)];
+					A3[4][j] = CHANGEME[i+1];
+					A3[5][j] = CHANGEME[i+mx*my+1];
+					A3[6][j] = CHANGEME[i-mx+1];
+					A3[7][j] = CHANGEME[i+mx*(my-1)+1];
+					B3[2][j] = CHANGEME[i+mx];
+					B3[3][j] = CHANGEME[i-mx*(my-1)];
+					B3[4][j] = CHANGEME[i-1];
+					B3[5][j] = CHANGEME[i-mx*my-1];
+					B3[6][j] = CHANGEME[i+mx-1];
+					B3[7][j] = CHANGEME[i-mx*(my-1)-1];
 				}
 			}else {
-				A3[1][j] = I[i-mx*my];
-				B3[1][j] = I[i+mx*my];
+				A3[1][j] = CHANGEME[i-mx*my];
+				B3[1][j] = CHANGEME[i+mx*my];
 				if ( (V3y[i]>=0) && (V3z[i]>=0) ) {
-					A3[2][j] = I[i+mx];
-					A3[3][j] = I[i-mx*(my-1)];
-					A3[4][j] = I[i-1];
-					A3[5][j] = I[i-mx*my-1];
-					A3[6][j] = I[i+mx-1];
-					A3[7][j] = I[i-mx*(my-1)-1];
-					B3[2][j] = I[i-mx];
-					B3[3][j] = I[i+mx*(my-1)];
-					B3[4][j] = I[i+1];
-					B3[5][j] = I[i+mx*my+1];
-					B3[6][j] = I[i-mx+1];
-					B3[7][j] = I[i+mx*(my-1)+1];
+					A3[2][j] = CHANGEME[i+mx];
+					A3[3][j] = CHANGEME[i-mx*(my-1)];
+					A3[4][j] = CHANGEME[i-1];
+					A3[5][j] = CHANGEME[i-mx*my-1];
+					A3[6][j] = CHANGEME[i+mx-1];
+					A3[7][j] = CHANGEME[i-mx*(my-1)-1];
+					B3[2][j] = CHANGEME[i-mx];
+					B3[3][j] = CHANGEME[i+mx*(my-1)];
+					B3[4][j] = CHANGEME[i+1];
+					B3[5][j] = CHANGEME[i+mx*my+1];
+					B3[6][j] = CHANGEME[i-mx+1];
+					B3[7][j] = CHANGEME[i+mx*(my-1)+1];
 				}else if ( (V3y[i]<0) && (V3z[i]>=0) ) {
-					A3[2][j] = I[i-mx];
-					A3[3][j] = I[i-mx*(my+1)];
-					A3[4][j] = I[i-1];
-					A3[5][j] = I[i-mx*my-1];
-					A3[6][j] = I[i-mx-1];
-					A3[7][j] = I[i-mx*(my+1)-1];
-					B3[2][j] = I[i+mx];
-					B3[3][j] = I[i+mx*(my+1)];
-					B3[4][j] = I[i+1];
-					B3[5][j] = I[i+mx*my+1];
-					B3[6][j] = I[i+mx+1];
-					B3[7][j] = I[i+mx*(my+1)+1];
+					A3[2][j] = CHANGEME[i-mx];
+					A3[3][j] = CHANGEME[i-mx*(my+1)];
+					A3[4][j] = CHANGEME[i-1];
+					A3[5][j] = CHANGEME[i-mx*my-1];
+					A3[6][j] = CHANGEME[i-mx-1];
+					A3[7][j] = CHANGEME[i-mx*(my+1)-1];
+					B3[2][j] = CHANGEME[i+mx];
+					B3[3][j] = CHANGEME[i+mx*(my+1)];
+					B3[4][j] = CHANGEME[i+1];
+					B3[5][j] = CHANGEME[i+mx*my+1];
+					B3[6][j] = CHANGEME[i+mx+1];
+					B3[7][j] = CHANGEME[i+mx*(my+1)+1];
 				}else if ( (V3y[i]>=0) && (V3z[i]<0) ) {
-					A3[2][j] = I[i+mx];
-					A3[3][j] = I[i-mx*(my-1)];
-					A3[4][j] = I[i-1];
-					A3[5][j] = I[i-mx*my-1];
-					A3[6][j] = I[i+mx-1];
-					A3[7][j] = I[i-mx*(my-1)-1];
-					B3[2][j] = I[i-mx];
-					B3[3][j] = I[i+mx*(my-1)];
-					B3[4][j] = I[i+1];
-					B3[5][j] = I[i+mx*my+1];
-					B3[6][j] = I[i-mx+1];
-					B3[7][j] = I[i+mx*(my-1)+1];
+					A3[2][j] = CHANGEME[i+mx];
+					A3[3][j] = CHANGEME[i-mx*(my-1)];
+					A3[4][j] = CHANGEME[i-1];
+					A3[5][j] = CHANGEME[i-mx*my-1];
+					A3[6][j] = CHANGEME[i+mx-1];
+					A3[7][j] = CHANGEME[i-mx*(my-1)-1];
+					B3[2][j] = CHANGEME[i-mx];
+					B3[3][j] = CHANGEME[i+mx*(my-1)];
+					B3[4][j] = CHANGEME[i+1];
+					B3[5][j] = CHANGEME[i+mx*my+1];
+					B3[6][j] = CHANGEME[i-mx+1];
+					B3[7][j] = CHANGEME[i+mx*(my-1)+1];
 				}else {
-					A3[2][j] = I[i-mx];
-					A3[3][j] = I[i-mx*(my+1)];
-					A3[4][j] = I[i-1];
-					A3[5][j] = I[i-mx*my-1];
-					A3[6][j] = I[i-mx-1];
-					A3[7][j] = I[i-mx*(my+1)-1];
-					B3[2][j] = I[i+mx];
-					B3[3][j] = I[i+mx*(my+1)];
-					B3[4][j] = I[i+1];
-					B3[5][j] = I[i+mx*my+1];
-					B3[6][j] = I[i+mx+1];
-					B3[7][j] = I[i+mx*(my+1)+1];
+					A3[2][j] = CHANGEME[i-mx];
+					A3[3][j] = CHANGEME[i-mx*(my+1)];
+					A3[4][j] = CHANGEME[i-1];
+					A3[5][j] = CHANGEME[i-mx*my-1];
+					A3[6][j] = CHANGEME[i-mx-1];
+					A3[7][j] = CHANGEME[i-mx*(my+1)-1];
+					B3[2][j] = CHANGEME[i+mx];
+					B3[3][j] = CHANGEME[i+mx*(my+1)];
+					B3[4][j] = CHANGEME[i+1];
+					B3[5][j] = CHANGEME[i+mx*my+1];
+					B3[6][j] = CHANGEME[i+mx+1];
+					B3[7][j] = CHANGEME[i+mx*(my+1)+1];
 				}
 			}
 
@@ -2972,7 +2971,7 @@ static void* look_neigbourhood_point( void* ptr ){
 		for (k=start; k<end; k++) {
 			i = M[k];
 
-			lv1 = I[i];
+			lv1 = CHANGEME[i];
 			if ( (lv1>V1a[j]) && (lv1>V1b[j]) && (lv1>V2a[j]) && (lv1>V2b[j]) && (lv1>V3a[j]) && (lv1>V3b[j]) ) {
 
 				tomo->F[i] = 1;
