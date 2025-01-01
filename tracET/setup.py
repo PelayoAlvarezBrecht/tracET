@@ -1,5 +1,6 @@
 from setuptools import setup, Extension, find_packages
 import os
+import numpy
 
 module1 = Extension('supression',
                     include_dirs=[os.path.join(os.getcwd(), 'include')],
@@ -14,6 +15,7 @@ setup (name = 'tracET',
        packages = find_packages(),
        package_dir = {'tracET': './tracET'},
        ext_modules = [module1],
+       include_dirs=[numpy.get_include()],
        entry_points = {
            'console_scripts': [
                     'get_saliency = tracET.scripts.get_saliency:main',
