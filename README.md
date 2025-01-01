@@ -21,10 +21,10 @@ pip install -i https://test.pypi.org/simple/ tracET --no-build-isolation
 export PATH=$PATH:~/.local/bin
 ```
 * From Github:
-  * Clone the repository https://github.com/PelayoAlvarezBrecht/tracer/
-  * In a terminal, open the subdirectory *cmodules*
-  * Execute the command *python setup.py install*
-
+```
+git clone https://github.com/PelayoAlvarezBrecht/tracer/
+python setup.py tracET/setup.py
+```
 
 ## Scripts
 There is six different scripts to apply different parts of the process:
