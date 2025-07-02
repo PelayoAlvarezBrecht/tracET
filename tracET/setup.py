@@ -1,8 +1,9 @@
 from setuptools import setup, Extension, find_packages
 import os
+import numpy
 
 module1 = Extension('supression',
-                    include_dirs=[os.path.join(os.getcwd(), 'include')],
+                    include_dirs=[numpy.get_include(), os.path.join(os.getcwd(), 'include')],
                    # libraries=['math','pthread','unistd','string'],
                     #library_dirs=['/usr/local/lib'],
                     sources = ['tracET/cmodules/supressionmodule.c',],)
