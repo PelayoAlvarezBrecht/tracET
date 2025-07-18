@@ -1,147 +1,173 @@
-# tracET: A Software for tracing low-level structures in cryo-Electron Tomography
-
-
-## Requirements
-* Python with the packages listed in the document [requirements.txt](https://github.com/PelayoAlvarezBrecht/tracer/tree/pypi/requirements.txt)
-* Ensure all of them are installed before installing the package. **This package does not install them automatically**.
+# tracET: A Software for Tracing Low-Level Structures in Cryo-Electron Tomography
 
 ## Installation
-You can install tracET in two ways:
-* From PyPI (recommended):
-  * In a python terminal, write
-```commandline
-pip install -i https://test.pypi.org/simple/ tracET
-```
-  * If it desnt work, try:
-```commandline
-pip install -i https://test.pypi.org/simple/ tracET --no-build-isolation
-```
-  * If is not do it automatically, add this line to your bashrc to add the scripts as commands:
-```commandline
-export PATH=$PATH:~/.local/bin
-```
-* From Github:
-  * Clone the repository https://github.com/PelayoAlvarezBrecht/tracer/
-  * In a terminal, open the subdirectory *cmodules*
-  * Execute the command *python setup.py install*
 
+* Clone the repository: [https://github.com/PelayoAlvarezBrecht/tracer/](https://github.com/PelayoAlvarezBrecht/tracer/)
+* Once inside, make sure all the packages listed in [requirements.txt](https://github.com/PelayoAlvarezBrecht/tracer/tree/pypi/requirements.txt) are installed by running:
+
+  ```bash
+  pip install -r requirements.txt
+  ```
+* Finally, in a terminal, run the command:
+
+  ```bash
+  python3 tracET/setup.py install
+  ```
 
 ## Scripts
-There is six different scripts to apply different parts of the process:
 
-### Saliency map:
-* Script description:
-  * The name of the script is get_saliency.py
-  * From a tomogram with a binary segmentation, calculates the saliency map, a distance transfromation of the input softed with a gaussian filter.
-  * This step is also included in the apply_nonmaxsup.py script.
+There are six different scripts used to apply different parts of the process:
 
-* Parameters:
-  * The parameter *in_tomo*, called with "-i" or "--itomo", needs the name of the input file. A binary map tomogram in a mrc format or nrrd format.
-  * The parameter *smooth_deviation*, called with "-s" or "-sdesv", is the desviation for gaussian filter and it should be ~1/3 of the element radium.
+---
 
-* Outputs:
-  * A tomogram with the saliency map, in the same format of the input and with the same name with the sufix _*saliency*
+### Saliency Map
 
-### Non-Maximum Suppression:
-* Script description:
-  * The name of the script is apply_nonmaxsup.py
-  * From a segmentation or a saliency map, detect the most central voxels of the elements and construct an equiespatial point cloud of this elements. 
-  
+* **Script description:**
 
-* Parameters:
-  * The parameter *in_tomo*, called with "-i" or "--itomo", needs the name of the input file. A scalar or binary map tomogram in a mrc format or nrrd format.
-  * The parameter *smooth_deviation*, called with "-s" or "-sdesv", is the desviation for gaussian filter and it should be ~1/3 of the element radium.
-  * The parameter *skel_mode*, called with "-m" or "--mode", is the structural mode for computing the skeleton: "s" for surfaces, "l" for lines and "b" for blobs.
-  * The parameter *binary_input*, called with "-b" or "--ibin", needs to be 0 if is a scalar map, and 1 if is a binary map. In this case, it calculates the distance transformation saliency map.
-  * The parameter *filter*, called with "-f" or "--filt", is the filter for the mask of the suppression. Is optional and if is not given, only eliminate negative values.
-  * The parameter *downsample*, called with "-d" or "--downs", if is given, apply a downsample of the radius indicated.
-  
+  * The name of the script is `get_saliency.py`.
+  * From a tomogram with a binary segmentation, it calculates the saliency map, a distance transformation of the input smoothed with a Gaussian filter.
+  * This step is also included in the `apply_nonmaxsup.py` script.
 
-* Outputs:
-  * A tomogram with only the maximums of the saliency map, in the same format of the input and with the same name with the sufix _*supred*
+* **Parameters:**
+
+  * The parameter `in_tomo`, called with `-i` or `--itomo`, specifies the name of the input file, a binary map tomogram in MRC or NRRD format.
+  * The parameter `smooth_deviation`, called with `-s` or `--sdesv`, sets the deviation for the Gaussian filter. It should be approximately 1/3 of the element radius.
+
+* **Outputs:**
+
+  * A tomogram with the saliency map, in the same format as the input and with the suffix `_saliency`.
+
+---
+
+### Non-Maximum Suppression
+
+* **Script description:**
+
+  * The name of the script is `apply_nonmaxsup.py`.
+  * From a segmentation or saliency map, it detects the most central voxels of the elements and constructs an equi-spatial point cloud of these elements.
+
+* **Parameters:**
+
+  * `in_tomo` (`-i`, `--itomo`): Input file name, a scalar or binary map tomogram in MRC or NRRD format.
+  * `smooth_deviation` (`-s`, `--sdesv`): Deviation for the Gaussian filter (\~1/3 of the element radius).
+  * `skel_mode` (`-m`, `--mode`): Structural mode for computing the skeleton: `s` for surfaces, `l` for lines, and `b` for blobs.
+  * `binary_input` (`-b`, `--ibin`): Set to `0` for scalar map, `1` for binary map. If `1`, a distance transformation saliency map is calculated.
+  * `filter` (`-f`, `--filt`): Filter for the suppression mask. Optional. If not given, only negative values are eliminated.
+  * `downsample` (`-d`, `--downs`): If provided, applies downsampling with the given radius.
+
+* **Outputs:**
+
+  * A tomogram containing only the saliency map maxima, in the same format as the input, with the suffix `_supred`.
+
+---
 
 ### Spatial Embedded Graph
-* Script description:
-  * The name of the script is `trace_graph.py`. Is called with the command:
-```commandline
-trace_graph - options
-```
-  * From a point cloud of filaments, trace a spatial embedded graph, calculates the different connect components, the different subbranches and model every branch as a curve to measure the different properties.
-  
 
-* Parameters:
-  * The parameter **input**, called with `-i` or `--itomo`, is the tomogram with the point cloud of the filament segmentation, in *mrc* or *nrrd* format. (The output of the previous script).
-  * The parameter **radius**, called with `-r` or `--rad`, is the radius for connect points in the graph.
-  * The parameter **subsampling**, called with `-s` or `--subsam`, is the radius used for subsample points. If is not given, there is not subsampling.
-  
+* **Script description:**
 
-* Outputs:
-  * A **vtp file** with the information of the graph components, branches and geometric data, with the same name of the input and the extension "_skel_graph.vtp"
-  * A csv with the information of the graph components, branches and geometric data, with the same name of the input and the extension "_skel_graph.csv"
+  * The name of the script is `trace_graph.py`. Run it with:
+
+    ```bash
+    trace_graph - options
+    ```
+  * From a point cloud of filaments, it traces a spatially embedded graph, calculates the different connected components and sub-branches, and models each branch as a curve to measure various properties.
+
+* **Parameters:**
+
+  * `input` (`-i`, `--itomo`): The tomogram containing the point cloud from filament segmentation (output of the previous script), in MRC or NRRD format.
+  * `radius` (`-r`, `--rad`): Radius for connecting points in the graph.
+  * `subsampling` (`-s`, `--subsam`): Radius used for point subsampling. If not given, no subsampling is applied.
+
+* **Outputs:**
+
+  * A **VTP file** with graph component, branch, and geometric data: same name as input + `_skel_graph.vtp`.
+  * A **CSV file** with the same information: same name as input + `_skel_graph.csv`.
+
+---
 
 ### Blobs Clustering
-* Script description:
-  * The name of the script is `Get_cluster.py`. Is called with the command:
-```commandline
-get_cluster - options
-```
-  * From a point cloud tomogram of blobs, cluster the points using MeanShift or Affinity Propagation, and localize the centroids.
 
-* Parameters:
-  * The parameter **input**, called with `-i` or `--itomo`, is the tomogram with the point cloud of the filament segmentation, in *mrc* or *nrrd* format. (The output of the previous script).
-  * The parameter **mode**, called with `-m` or `--mode`, is the parameter to select the algorithm of clustering:
-    * If is `Affinity`, *Affinity propagation* is used. Is only recommended for small tomograms.
-    * If is `MeanShift`, *Mean Shift algorithm* is used. This is recommended for all type of tomograms, but need two parameters more:
-      * The parameter **blob_diameter**, called with `-b` or `--blob_d`, is the diameter of the blobs planned to detect.
-      * The parameter **n_jobs**, called with `-n` or `--n_jobs`, is the number of jobs to execute the algorithm in parallel.
+* **Script description:**
 
-* Outputs:
-  * A **vtp file** with the points of the ribosomes labeled with the clusters they are part, with the same name of the input and the extension `mode'*_labeled.vtp*.
-  * A **mrc file** with the points of the ribosomes labeled with the clusters they are part, with the same name of the input and the extension `mode`*_labeled.mrc*.
-  * A **txt file**, convertible to IMOD *.mod* file, with the information of the centroid of every cluster.
+  * The name of the script is `Get_cluster.py`. Run it with:
 
-### Membrane clasification
-* Script description:
-  * The name of the script is `membrane_poly.py`. Is called with the command:
-```commandline
-membrane_poly - options
-```
-  * From a point cloud of membranes, it cluster the points in the different membranes.
+    ```bash
+    get_cluster - options
+    ```
+  * From a point cloud tomogram of blobs, it clusters the points using MeanShift or Affinity Propagation and localizes the centroids.
 
-* Parameters:
-  * The parameter **in_tomo**, called with `-i` or `--itomo`, is the tomogram with the point cloud of the membrane segmentation, in *mrc* or *nrrd* format. (The output of the previous script).
-  * The parameter **distance_clustering**, called with `-d` or `--dist`, is the distance of points to be part of the same cluster.
-  * The parameter **min_samples**, called with `-s` or `--samp`, is the minimum samples needed to make a cluster. Is optional and if is not given, it takes value 2.
+* **Parameters:**
 
-* Outputs:
-  * A **vtp file** with the points of the membranes labeled with the clusters (different membranes) they are part, with the same name of the input and the extension *.vtp*.
+  * `input` (`-i`, `--itomo`): The tomogram with the point cloud from filament segmentation, in MRC or NRRD format.
+  * `mode` (`-m`, `--mode`): Clustering algorithm to use:
+
+    * `Affinity` uses Affinity Propagation (only recommended for small tomograms).
+    * `MeanShift` uses the Mean Shift algorithm (recommended for all types of tomograms). Requires two additional parameters:
+
+      * `blob_diameter` (`-b`, `--blob_d`): Diameter of the blobs to detect.
+      * `n_jobs` (`-n`, `--n_jobs`): Number of parallel jobs for the algorithm.
+
+* **Outputs:**
+
+  * A **VTP file** with ribosome points labeled by their cluster: same name + `mode_labeled.vtp`.
+  * An **MRC file** with the same labels: same name + `mode_labeled.mrc`.
+  * A **TXT file** (convertible to IMOD *.mod* format) with centroid information for each cluster.
+
+---
+
+### Membrane Classification
+
+* **Script description:**
+
+  * The name of the script is `membrane_poly.py`. Run it with:
+
+    ```bash
+    membrane_poly - options
+    ```
+  * From a point cloud of membranes, it clusters points into different membranes.
+
+* **Parameters:**
+
+  * `in_tomo` (`-i`, `--itomo`): The tomogram with the membrane segmentation point cloud, in MRC or NRRD format.
+  * `distance_clustering` (`-d`, `--dist`): Distance threshold for points to be part of the same cluster.
+  * `min_samples` (`-s`, `--samp`): Minimum samples required to form a cluster. Optional. Defaults to 2 if not given.
+
+* **Outputs:**
+
+  * A **VTP file** with membrane points labeled by cluster (membrane): same name + `.vtp`.
+
+---
 
 ### DICE Metric
 
-* Script description:
-  * The name of the script is `seg_skel_dice.py`. Is called with the command:
-```commandline
-seg_skel_dice - options
-```
-  * From two different binary segmentations, it calculates the TS, TP and DICE metric, and give the two skeletons of the inputs.
+* **Script description:**
 
-* Parameters:
-  * the parameter **in_tomo**, called with `-i` or `--itomo`, is the input, a tomogram with a binary segmentation, in *mrc* or *nrrd* format.
-  * The parameter **gt_tomo**, called with `-g` or `--igt` is the ground truth segmentation, a binary tomogram in *mrc* or *nrrd* format.
-  * The parameter **skel_mode**, called with `-m` or `--mode`, is the structural mode for computing the skeleton: `s` for surfaces, `l` for lines and `b` for blobs.
-  * The parameter **dilation**, called with `-d` or `--dil`, is the numbers of iterations to make a pre-dilation (to make thicker the segmentations). Is optional, and if is not given, it wll not do any dilation.
-  * The parameter **ifilter**, called with `-f` or `--ifilt`, is the filter threshold for the mask to apply the non-maximum suppression to the input tomogram. Is optional and in by default is fixed in 0.065. You can put less if is too strong.
-  * The parameter **gtfilter**, called with `-F` or `--tfilt`, is the filter threshold for the mask to apply the non-maximum suppression to the ground truth tomogram. Is optional and in by default is fixed in 0.065. You can put less if is too strong.
-* Outputs:
+  * The name of the script is `seg_skel_dice.py`. Run it with:
+
+    ```bash
+    seg_skel_dice - options
+    ```
+  * From two binary segmentations, it calculates TS, TP, and DICE metrics, and outputs the skeletons of both inputs.
+
+* **Parameters:**
+
+  * `in_tomo` (`-i`, `--itomo`): Input binary segmentation tomogram in MRC or NRRD format.
+  * `gt_tomo` (`-g`, `--igt`): Ground truth binary tomogram in MRC or NRRD format.
+  * `skel_mode` (`-m`, `--mode`): Structural mode: `s` for surfaces, `l` for lines, `b` for blobs.
+  * `dilation` (`-d`, `--dil`): Number of iterations for pre-dilation. Optional. If not given, no dilation is applied.
+  * `ifilter` (`-f`, `--ifilt`): Threshold for input mask filtering in non-maximum suppression. Optional. Default is 0.065; decrease if too strong.
+  * `gtfilter` (`-F`, `--tfilt`): Threshold for ground truth mask filtering. Optional. Default is 0.065; decrease if too strong.
+
+* **Outputs:**
+
   * **TS metric** value.
   * **TP metric** value.
   * **DICE metric** value.
-  * (Optional) Asked with `-o` or `--otomo`, **skeleton** of the input tomogram.
-  * (Optional) Asked with `-t` or `--ogt`, **skeleton** of the ground truth tomogram.
-
+  * (Optional) Skeleton of the input tomogram (`-o`, `--otomo`).
+  * (Optional) Skeleton of the ground truth tomogram (`-t`, `--ogt`).
 
 ## Tutorials
-In this section we are going to explain how to generate a result from a example data, that we save in the following directory. (**Write here the directory**)
+In this section we are going to explain how to generate a result from a example data, that we save in the following ![directory](https://zenodo.org/records/13921453).
 
 ### Surface example: Membranes
 * In the subdirectory `Membrane` we look at the file `tomo_001_mem_croped.mrc`. In paraview it looks like:
@@ -154,7 +180,7 @@ apply_nonmaxsup -i tomo_001_mem_croped.mrc -s 2 -m s -b 1 -f 0.065 -d 10
 ```
 * the result will be:
 
-![Membrane skeleton](images_tutorial/tutorial_supred_membrane.gif)
+![Membrane skeleton](images_tutorial/Tutorial_supred_membrane.gif)
 
 * Finnally we divide in different membranes using the command with the next options:
 ```commandline
