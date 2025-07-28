@@ -1,9 +1,9 @@
-numpy
-scipy
+scikit-image==0.24.0
+scikit-learn==1.7.0
+numpy==2.2.6
+scipy==1.15.3
+vtk
 pynrrd
 mrcfile
-vtk
 networkx
 open3d
-scikit-learn
-scikit-image
