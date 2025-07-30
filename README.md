@@ -3,16 +3,22 @@
 ## Installation
 
 * Clone the repository: [https://github.com/PelayoAlvarezBrecht/tracer/](https://github.com/PelayoAlvarezBrecht/tracer/)
-* Once inside, make sure all the packages listed in [requirements.txt](https://github.com/PelayoAlvarezBrecht/tracer/tree/pypi/requirements.txt) are installed by running:
+* Create and activate a virtual environment:
 
+  ```bash
+  python3 -m venv tracet_env
+  source tracet_env/bin/activate
+  ```
+* Once inside the virtual environment, make sure all the packages listed in [requirements.txt](https://github.com/PelayoAlvarezBrecht/tracer/tree/pypi/requirements.txt) are installed by running:
   ```bash
   pip install -r requirements.txt
   ```
 * Finally, in a terminal, run the command:
 
   ```bash
-  python3 tracET/setup.py install
+  pip install --no-build-isolation tracET/.
   ```
+
 
 ## Scripts
 
