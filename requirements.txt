@@ -7,3 +7,4 @@ pynrrd
 mrcfile
 networkx
 open3d
+wheel
