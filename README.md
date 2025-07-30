@@ -16,9 +16,8 @@
 * Finally, in a terminal, run the command:
 
   ```bash
-  pip install --no-build-isolation tracET/.
+  python3 tracET/setup.py install
   ```
-
 
 ## Scripts
 

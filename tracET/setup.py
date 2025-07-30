@@ -9,7 +9,7 @@ module1 = Extension(
         numpy.get_include(),
         os.path.join(os.getcwd(), 'include'),
     ],
-    sources=['cmodules/supressionmodule.c'],
+    sources=['tracET/cmodules/supressionmodule.c'],
 )
 
 # Main setup call
@@ -19,7 +19,6 @@ setup(
     description='A package that could transform a scalar map in a point cloud, trace a graph for filaments and compute the dice metric for two segmentations.',
     author='Pelayo Alvarez-Brecht, Antonio Martinez-Sanchez',
     packages=find_packages(),
-    package_dir={'tracET': './tracET'},
     ext_modules=[module1],
     entry_points={
         'console_scripts': [
