@@ -224,7 +224,7 @@ get_cluster -i tomo_001_ribo_croped_supred_time.mrc -m MeanShift -b 20 -n 20
 
 * For create the skeleton we use the command with the next options:
 ```commandline
-apply_nonmaxsup -i tomo_001_actin_trimmed.mrc -s 2 -m b -b l -f 0.1 -d 0
+apply_nonmaxsup -i tomo_001_actin_trimmed.mrc -s 2 -m l -b 1 -f 0.1 -d 0
 ```
 
 * The result in IMOD will be:
