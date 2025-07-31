@@ -3,7 +3,7 @@
 ## Installation
 
 * Clone the repository: [https://github.com/PelayoAlvarezBrecht/tracer/](https://github.com/PelayoAlvarezBrecht/tracer/)
-* Create and activate a virtual environment:
+* Create and activate a virtual environment  (ensure you're using Python 3.10 or later).
 
   ```bash
   python3 -m venv tracet_env
@@ -18,6 +18,8 @@
   ```bash
   python3 tracET/setup.py install
   ```
+
+The installation has been tested on Ubuntu 22.04, Ubuntu 24.04, and WSL2 (Ubuntu) using Python 3.10.12.
 
 ## Scripts
 
@@ -172,7 +174,7 @@ There are six different scripts used to apply different parts of the process:
   * (Optional) Skeleton of the ground truth tomogram (`-t`, `--ogt`).
 
 ## Tutorials
-In this section we are going to explain how to generate a result from a example data, that we save in the following ![directory](https://zenodo.org/records/13921453).
+In this section we are going to explain how to generate a result from a example data, that we save in the following [directory](https://zenodo.org/records/13921453).
 
 ### Surface example: Membranes
 * In the subdirectory `Membrane` we look at the file `tomo_001_mem_croped.mrc`. In paraview it looks like:
